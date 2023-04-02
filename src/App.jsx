@@ -1,10 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useContext } from 'react';
 import './app.scss';
-import Nav from './Components/Nav';
+import { useContext } from 'react';
 import { Store } from './store';
+import Nav from './Components/Nav';
 import Home from './Pages/Home';
 import SectionsCreate from './Pages/Sections/Create';
+import Login from './Pages/Auth/Login';
+import List from './Pages/Sections/List';
 
 function App() {
     const { page, pageTop } = useContext(Store);
@@ -14,6 +16,8 @@ function App() {
             {pageTop === 'nav' ? <Nav /> : null}
             {page === 'home' ? <Home /> : null}
             {page === 'sections-create' ? <SectionsCreate /> : null}
+            {page === 'sections-list' ? <List /> : null}
+            {page === 'login' ? <Login /> : null}
         </>
     );
 }

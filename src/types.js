@@ -1,11 +1,5 @@
-//
-//
-//
-
 export const NAVIGATE = 501; // click on link
 export const REMOVE_MESSAGE = 502 // remove message
-
-
 
 export const SECTIONS_LIST = 1001 // get sections list
 export const SECTIONS_SHOW_CREATE = 501 // show create new item in sections

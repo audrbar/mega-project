@@ -2,16 +2,22 @@ import { useContext } from 'react';
 import { navigate } from '../actions';
 import { Store } from '../store';
 
-export default function Link({ to, children, className }) {
-    const { dispach } = useContext(Store);
+export default function Link({ to, children, className, action }) {
 
-    const go = (e) => {
+    const { actionsList, dispach } = useContext(Store);
+
+    const go = e => {
         e.preventDefault();
-        dispach(navigate(to));
+        window.location.hash = to || action;
+        if (to) {
+            dispach(navigate(to));
+        } else {
+            dispach(actionsList[action]());
+        }
     };
 
     return (
-        <a href={to} className={className} onClick={go}>
+        <a href={to || action} className={className} onClick={go}>
             {children}
         </a>
     );

@@ -4,8 +4,8 @@ export default function Nav() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">
-                    Navbar w/ text
+                <a className="navbar-brand" href="/">
+                    Navbar
                 </a>
                 <button
                     className="navbar-toggler"
@@ -31,9 +31,9 @@ export default function Nav() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                Pricing
-                            </a>
+                            <Link action="sections-list" className="nav-link">
+                                Sriciu sarasas
+                            </Link>
                         </li>
                     </ul>
                     <span className="navbar-text">

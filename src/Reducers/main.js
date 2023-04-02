@@ -63,6 +63,5 @@ export default function main(state, action) {
         default:
     }
 
-
     return state;
 }
