@@ -6,6 +6,7 @@ export default function List() {
 
     const { store, dispach, start } = useContext(Store);
 
+
     return (
         <div className="container">
             <div className="row justify-content-center">

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+// const fs = require('fs');
 const mysql = require('mysql');
 const { v4: uuidv4 } = require('uuid');
 const md5 = require('md5');
@@ -113,6 +114,9 @@ app.delete('/admin/sections/:id', (req, res) => {
     });
 });
 
+
+
+
 // app.put('/admin/sections/:id', (req, res) => {
 
 //     const sql = `
@@ -146,7 +150,7 @@ app.post('/login', (req, res) => {
     con.query(sql, [sessionId, req.body.name, md5(req.body.psw)], (err, result) => {
         if (err) throw err;
         if (result.affectedRows) {
-            res.cookie('treesSession', sessionId);
+            res.cookie('megaSession', sessionId);
             res.json({
                 status: 'ok',
                 name: req.body.name
@@ -161,13 +165,11 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-    res.cookie('treesSession', '');
+    res.cookie('megaSession', '');
     res.json({
         status: 'logout',
     });
 });
-
-
 
 app.get('/login', (req, res) => {
 
@@ -176,7 +178,7 @@ app.get('/login', (req, res) => {
         FROM users
         WHERE session = ?
     `;
-    con.query(sql, [req.cookies.treesSession || ''], (err, result) => {
+    con.query(sql, [req.cookies.megaSession || ''], (err, result) => {
         if (err) throw err;
 
         if (result.length) {
@@ -193,8 +195,6 @@ app.get('/login', (req, res) => {
     });
 
 });
-
-
 
 app.listen(port, () => {
     console.log(`LN is on port number: ${port}`);
