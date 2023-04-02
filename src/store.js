@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useState } from 'react';
 import main from './Reducers/main';
 import axios from 'axios';
 import { sectionsList, sectionsCreate } from './actions';
@@ -17,6 +17,7 @@ export const Store = createContext();
 
 export const Provider = (props) => {
 
+    const [loader, setLoader] = useState(false);
     const [store, dispach] = useReducer(main, {
         page: 'home',
         pageTop: 'nav'
@@ -25,17 +26,28 @@ export const Provider = (props) => {
     const dataDispach = action => {
         if (!action.payload || !action.payload.url) {
             dispach(action);
+            setLoader(false);
         } else {
-            axios[action.payload.method](url + action.payload.url)
+            const args = [url + action.payload.url];
+            if (action.payload.body) {
+                args.push(action.payload.body);
+            }
+            axios[action.payload.method](...args)
                 .then(res => {
-                    console.log(res.data);
-                    dispach({
-                        ...action, payload: {
+                    action = {
+                        ...action, payload:
+                        {
                             ...action.payload, ...res.data
-                        }
-                    });
+                        }, doDispach
+                    }
+                    dispach(action);
+                    setLoader(false);
                 })
         }
+    }
+
+    const doDispach = action => {
+        dataDispach(action);
     }
 
     return (
@@ -44,7 +56,10 @@ export const Provider = (props) => {
             pageTop: store.pageTop,
             store,
             dispach: dataDispach,
-            actionsList
+            actionsList,
+            messages: store.messages,
+            loader,
+            start: () => setLoader(true)
         }}>
             {props.children}
         </Store.Provider>
