@@ -1,6 +1,15 @@
 import { createContext, useReducer } from 'react';
 import main from './Reducers/main';
 
+export const actionsList = {
+    //     'sections-list': sectionsList,
+    //     'sections-create': sectionsCreate,
+    //     'sections-delete': sectionsDelete,
+    //     'sections-show-edit': sectionsShowEdit,
+    //     'sections-edit': sectionsEdit,
+}
+
+
 
 export const Store = createContext();
 

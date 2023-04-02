@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useContext } from 'react';
-import './app.css';
+import './app.scss';
 import Nav from './Components/Nav';
 import { Store } from './store';
 import Home from './Pages/Home';

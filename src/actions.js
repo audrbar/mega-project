@@ -1,3 +1,3 @@
-export const navogate = payload => {
+export const navigate = payload => {
 
 }
