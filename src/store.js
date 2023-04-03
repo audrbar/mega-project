@@ -9,7 +9,7 @@ export const actionsList = {
     'sections-delete': sectionsDelete,
     'sections-show-edit': sectionsShowEdit,
     'sections-edit': sectionsEdit,
-    'districtsCreate': districtsCreate,
+    'districts-create': districtsCreate,
 }
 
 const url = 'http://localhost:3004/';
