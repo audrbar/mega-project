@@ -114,26 +114,23 @@ app.delete('/admin/sections/:id', (req, res) => {
     });
 });
 
+app.put('/admin/sections/:id', (req, res) => {
+
+    const sql = `
+        UPDATE sections
+        SET title = ?
+        WHERE id = ?
+    `;
+    const params = [req.body.title, req.params.id];
 
 
-
-// app.put('/admin/sections/:id', (req, res) => {
-
-//     const sql = `
-//         UPDATE sections
-//         SET title = ?
-//         WHERE id = ?
-//     `;
-//     params = [req.body.title, req.params.id];
-
-
-//     con.query(sql, params, (err) => {
-//         if (err) throw err;
-//         res.json({
-//             msg: { text: 'Sritis pakeista', type: 'info' }
-//         });
-//     });
-// });
+    con.query(sql, params, (err) => {
+        if (err) throw err;
+        res.json({
+            msg: { text: 'Sritis pakeista', type: 'info' }
+        });
+    });
+});
 
 
 //*************** LOGIN ********************/
