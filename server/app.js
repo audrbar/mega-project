@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-// const fs = require('fs');
+const fs = require('fs');
 const mysql = require('mysql');
 const { v4: uuidv4 } = require('uuid');
 const md5 = require('md5');
@@ -59,6 +59,44 @@ app.use(express.json());
 
 // app.use(doAuth);
 
+//*************** PHOTO ********************/
+
+const convertPhoto = (photo) => {
+
+    let type = 'unknown';
+    let file = null;
+
+    if (photo === null) {
+        return [type, file];
+    }
+
+    if (photo.indexOf('data:image/png;base64,') === 0) {
+        type = 'png';
+        file = Buffer.from(photo.replace('data:image/png;base64,', ''), 'base64');
+    } else if (photo.indexOf('data:image/jpeg;base64,') === 0) {
+        type = 'jpg';
+        file = Buffer.from(photo.replace('data:image/jpeg;base64,', ''), 'base64');
+    } else {
+        file = Buffer.from(photo, 'base64');
+    }
+
+    return [type, file];
+
+}
+
+const createPhoto = (photo) => {
+
+    const [type, file] = convertPhoto(photo);
+
+    if (file === null) {
+        return null
+    }
+
+    const fileName = uuidv4() + '.' + type;
+    fs.writeFileSync('./public/img/' + fileName, file);
+
+    return fileName
+}
 
 //*************** SECTIONS ********************/
 
@@ -132,6 +170,33 @@ app.put('/admin/sections/:id', (req, res) => {
     });
 });
 
+//*************** DISTRICTS ********************/
+
+app.get('/admin/districts', (req, res) => {
+    const sql = `
+        SELECT id, title
+        FROM sections
+        ORDER BY title
+    `;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json({ data: result });
+    });
+});
+
+
+app.post('/admin/districts', (req, res) => {
+    const sql = `
+        INSERT INTO districts (title, photo)
+        VALUES (?, ?)
+    `;
+    con.query(sql, [req.body.title, createPhoto(req.body.file)], (err) => {
+        if (err) throw err;
+        res.json({
+            msg: { text: 'Naujas rajonas pridėtas', type: 'success' }
+        });
+    });
+});
 
 //*************** LOGIN ********************/
 

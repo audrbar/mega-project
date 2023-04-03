@@ -35,6 +35,16 @@ export default function Nav() {
                                 Sričių sąrašas
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="districts-create" className="nav-link">
+                                Naujas rajonas
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link action="districts-list" className="nav-link">
+                                Rajonų sąrašas
+                            </Link>
+                        </li>
                     </ul>
                     <span className="navbar-text">
                         <Link to="login" className="nav-link">
