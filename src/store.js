@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState } from 'react';
-import { districtsCreate, districtsList, districtsDelete, districtsShowEdit, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
+import { districtsCreate, districtsDelete, districtsEdit, districtsList, districtsShowEdit, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
 import main from './Reducers/main';
 import axios from 'axios';
 
@@ -9,14 +9,16 @@ export const actionsList = {
     'sections-delete': sectionsDelete,
     'sections-show-edit': sectionsShowEdit,
     'sections-edit': sectionsEdit,
+
     'districts-create': districtsCreate,
     'districts-list': districtsList,
     'districts-delete': districtsDelete,
     'districts-show-edit': districtsShowEdit,
-
+    'districts-edit': districtsEdit,
 }
 
 const url = 'http://localhost:3004/';
+const imgUrl = 'http://localhost:3004/img/';
 
 
 export const Store = createContext();
@@ -54,8 +56,11 @@ export const Provider = (props) => {
                     if (!action.payload.show) {
                         setLoader(false);
                     }
+
                 })
         }
+
+
     }
 
     const doDispach = action => {
@@ -72,7 +77,9 @@ export const Provider = (props) => {
             actionsList,
             messages: store.messages,
             loader,
-            start: () => setLoader(true)
+            start: () => setLoader(true),
+
+            imgUrl
         }}>
             {props.children}
         </Store.Provider>

@@ -1,4 +1,4 @@
-import { DISTRICTS_CREATE, DISTRICTS_LIST, DISTRICTS_DELETE, DISTRICTS_SHOW_EDIT, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
+import { DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
 
 export const navigate = to => {
     return {
@@ -97,13 +97,12 @@ export const districtsShowEdit = id => {
     return {
         type: DISTRICTS_SHOW_EDIT,
         payload: {
-            url: 'admin/districtss/' + id,
+            url: 'admin/districts/' + id,
             method: 'get',
             page: 'districts-show-edit'
         }
     }
 }
-
 
 export const sectionsEdit = (body, id) => {
     return {
@@ -113,6 +112,19 @@ export const sectionsEdit = (body, id) => {
             method: 'put',
             body,
             show: 'sections-list',
+            pauseShow: 1000
+        }
+    }
+}
+
+export const districtsEdit = (body, id) => {
+    return {
+        type: DISTRICTS_EDIT,
+        payload: {
+            url: 'admin/districts/' + id,
+            method: 'put',
+            body,
+            show: 'districts-list',
             pauseShow: 1000
         }
     }

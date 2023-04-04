@@ -30,32 +30,32 @@ app.use(
 );
 app.use(express.json());
 
-const doAuth = function (req, res, next) {
+// const doAuth = function (req, res, next) {
 
-    if (req.url.indexOf('/numbers') === 0) {
-        const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
-        const user = req.cookies.magicNumberSession ?
-            users.find(u => u.session === req.cookies.magicNumberSession) :
-            null;
-        if (user && (user.role === 'admin' || user.role === 'manager')) {
-            next();
-        } else {
-            res.status(401).json({});
-        }
-    } else if (req.url.indexOf('/users') === 0) {
-        const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
-        const user = req.cookies.magicNumberSession ?
-            users.find(u => u.session === req.cookies.magicNumberSession) :
-            null;
-        if (user && (user.role === 'admin')) {
-            next();
-        } else {
-            res.status(401).json({});
-        }
-    } else {
-        next();
-    }
-}
+//     if (req.url.indexOf('/numbers') === 0) {
+//         const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
+//         const user = req.cookies.magicNumberSession ?
+//             users.find(u => u.session === req.cookies.magicNumberSession) :
+//             null;
+//         if (user && (user.role === 'admin' || user.role === 'manager')) {
+//             next();
+//         } else {
+//             res.status(401).json({});
+//         }
+//     } else if (req.url.indexOf('/users') === 0) {
+//         const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
+//         const user = req.cookies.magicNumberSession ?
+//             users.find(u => u.session === req.cookies.magicNumberSession) :
+//             null;
+//         if (user && (user.role === 'admin')) {
+//             next();
+//         } else {
+//             res.status(401).json({});
+//         }
+//     } else {
+//         next();
+//     }
+// }
 
 // app.use(doAuth);
 
@@ -81,7 +81,6 @@ const convertPhoto = (photo) => {
     }
 
     return [type, file];
-
 }
 
 const createPhoto = (photo) => {
@@ -96,6 +95,20 @@ const createPhoto = (photo) => {
     fs.writeFileSync('./public/img/' + fileName, file);
 
     return fileName
+}
+
+const deletePhoto = (id) => {
+    const sql = `
+        SELECT photo
+        FROM districts
+        WHERE id = ?
+    `;
+    con.query(sql, [id], (err, result) => {
+        if (err) throw err;
+        if (result[0].photo) {
+            fs.unlinkSync('./public/img/' + result[0].photo);
+        }
+    });
 }
 
 //*************** SECTIONS ********************/
@@ -182,6 +195,18 @@ app.get('/admin/districts', (req, res) => {
     });
 });
 
+app.get('/admin/districts/:id', (req, res) => {
+    const sql = `
+        SELECT id, title, photo
+        FROM districts
+        WHERE id = ?
+    `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.json({ data: result[0] });
+    });
+});
+
 app.post('/admin/districts', (req, res) => {
     const sql = `
         INSERT INTO districts (title, photo)
@@ -197,10 +222,13 @@ app.post('/admin/districts', (req, res) => {
 
 app.delete('/admin/districts/:id', (req, res) => {
 
+    deletePhoto(req.params.id);
+
     const sql = `
         DELETE FROM districts
         WHERE id = ?
     `;
+
     con.query(sql, [req.params.id], (err) => {
         if (err) throw err;
         res.json({
@@ -209,14 +237,28 @@ app.delete('/admin/districts/:id', (req, res) => {
     });
 });
 
+
 app.put('/admin/districts/:id', (req, res) => {
 
-    const sql = `
-        UPDATE districts
-        SET title = ?
-        WHERE id = ?
-    `;
-    const params = [req.body.title, req.params.id];
+    let sql;
+    const fileName = createPhoto(req.body.file);
+
+    if (fileName || req.body.delImg) {
+        deletePhoto(req.params.id);
+        sql = `
+            UPDATE districts
+            SET title = ?, photo = ?
+            WHERE id = ?
+        `;
+        const params = [req.body.title, fileName, req.params.id];
+    } else {
+        sql = `
+            UPDATE districts
+            SET title = ?
+            WHERE id = ?
+        `;
+        const params = [req.body.title, req.params.id];
+    }
 
     con.query(sql, params, (err) => {
         if (err) throw err;
