@@ -182,7 +182,6 @@ app.get('/admin/districts', (req, res) => {
     });
 });
 
-
 app.post('/admin/districts', (req, res) => {
     const sql = `
         INSERT INTO districts (title, photo)
@@ -192,6 +191,37 @@ app.post('/admin/districts', (req, res) => {
         if (err) throw err;
         res.json({
             msg: { text: 'Naujas rajonas pridėtas', type: 'success' }
+        });
+    });
+});
+
+app.delete('/admin/districts/:id', (req, res) => {
+
+    const sql = `
+        DELETE FROM districts
+        WHERE id = ?
+    `;
+    con.query(sql, [req.params.id], (err) => {
+        if (err) throw err;
+        res.json({
+            msg: { text: 'Rajonas ištrintas', type: 'info' }
+        });
+    });
+});
+
+app.put('/admin/districts/:id', (req, res) => {
+
+    const sql = `
+        UPDATE districts
+        SET title = ?
+        WHERE id = ?
+    `;
+    const params = [req.body.title, req.params.id];
+
+    con.query(sql, params, (err) => {
+        if (err) throw err;
+        res.json({
+            msg: { text: 'Rajonas pakeistas', type: 'info' }
         });
     });
 });

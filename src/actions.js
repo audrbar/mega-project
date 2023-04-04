@@ -1,4 +1,4 @@
-import { DISTRICTS_CREATE, DISTRICTS_LIST, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
+import { DISTRICTS_CREATE, DISTRICTS_LIST, DISTRICTS_DELETE, DISTRICTS_SHOW_EDIT, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
 
 export const navigate = to => {
     return {
@@ -70,6 +70,18 @@ export const sectionsDelete = id => {
     }
 }
 
+export const districtsDelete = id => {
+    return {
+        type: DISTRICTS_DELETE,
+        payload: {
+            url: 'admin/districts/' + id,
+            method: 'delete',
+            show: 'districts-list',
+            pauseShow: 0
+        }
+    }
+}
+
 export const sectionsShowEdit = id => {
     return {
         type: SECTIONS_SHOW_EDIT,
@@ -80,6 +92,18 @@ export const sectionsShowEdit = id => {
         }
     }
 }
+
+export const districtsShowEdit = id => {
+    return {
+        type: DISTRICTS_SHOW_EDIT,
+        payload: {
+            url: 'admin/districtss/' + id,
+            method: 'get',
+            page: 'districts-show-edit'
+        }
+    }
+}
+
 
 export const sectionsEdit = (body, id) => {
     return {

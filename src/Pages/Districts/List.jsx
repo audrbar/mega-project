@@ -28,7 +28,7 @@ export default function List() {
                                                     onClick={(_) => {
                                                         dispach(
                                                             actionsList[
-                                                                'sections-show-edit'
+                                                                'districts-show-edit'
                                                             ](s.id)
                                                         );
                                                         start();
@@ -42,7 +42,7 @@ export default function List() {
                                                     onClick={(_) => {
                                                         dispach(
                                                             actionsList[
-                                                                'sections-delete'
+                                                                'districts-delete'
                                                             ](s.id)
                                                         );
                                                         start();

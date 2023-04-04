@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState } from 'react';
-import { districtsCreate, districtsList, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
+import { districtsCreate, districtsList, districtsDelete, districtsShowEdit, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
 import main from './Reducers/main';
 import axios from 'axios';
 
@@ -11,6 +11,8 @@ export const actionsList = {
     'sections-edit': sectionsEdit,
     'districts-create': districtsCreate,
     'districts-list': districtsList,
+    'districts-delete': districtsDelete,
+    'districts-show-edit': districtsShowEdit,
 
 }
 

@@ -1,5 +1,5 @@
 import {
-    NAVIGATE, REMOVE_MESSAGE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_LIST
+    NAVIGATE, REMOVE_MESSAGE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT
 } from "../types";
 import { v4 as uuidv4 } from 'uuid';
 import { actionsList } from '../store';
@@ -27,6 +27,7 @@ export default function main(state, action) {
         case SECTIONS_LIST:
         case DISTRICTS_LIST:
         case SECTIONS_SHOW_EDIT:
+        case DISTRICTS_SHOW_EDIT:
             c.pageTop = 'nav';
             c.page = action.payload.page;
             c.data = action.payload.data;
