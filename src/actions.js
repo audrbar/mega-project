@@ -1,4 +1,4 @@
-import { DISTRICTS_CREATE, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
+import { DISTRICTS_CREATE, DISTRICTS_LIST, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
 
 export const navigate = to => {
     return {
@@ -16,6 +16,17 @@ export const sectionsList = _ => {
             url: 'admin/sections',
             method: 'get',
             page: 'sections-list'
+        }
+    }
+}
+
+export const districtsList = _ => {
+    return {
+        type: DISTRICTS_LIST,
+        payload: {
+            url: 'admin/districts',
+            method: 'get',
+            page: 'districts-list'
         }
     }
 }

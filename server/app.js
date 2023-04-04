@@ -124,7 +124,6 @@ app.get('/admin/sections/:id', (req, res) => {
     });
 });
 
-
 app.post('/admin/sections', (req, res) => {
     const sql = `
         INSERT INTO sections (title)
@@ -161,7 +160,6 @@ app.put('/admin/sections/:id', (req, res) => {
     `;
     const params = [req.body.title, req.params.id];
 
-
     con.query(sql, params, (err) => {
         if (err) throw err;
         res.json({
@@ -174,8 +172,8 @@ app.put('/admin/sections/:id', (req, res) => {
 
 app.get('/admin/districts', (req, res) => {
     const sql = `
-        SELECT id, title
-        FROM sections
+        SELECT id, title, photo
+        FROM districts
         ORDER BY title
     `;
     con.query(sql, (err, result) => {
@@ -253,9 +251,7 @@ app.get('/login', (req, res) => {
                 status: 'error',
             });
         }
-
     });
-
 });
 
 app.listen(port, () => {

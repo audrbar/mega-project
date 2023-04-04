@@ -25,24 +25,25 @@ export default function Nav() {
                                 Pradinis
                             </Link>
                         </li>
+
+                        <li className="nav-item">
+                            <Link action="sections-list" className="nav-link">
+                                Sritys
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link action="districts-list" className="nav-link">
+                                Rajonai
+                            </Link>
+                        </li>
                         <li className="nav-item">
                             <Link to="sections-create" className="nav-link">
                                 Nauja Sritis
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link action="sections-list" className="nav-link">
-                                Sričių sąrašas
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="districts-create" className="nav-link">
                                 Naujas rajonas
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link action="districts-list" className="nav-link">
-                                Rajonų sąrašas
                             </Link>
                         </li>
                     </ul>
