@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState } from 'react';
-import { districtsCreate, districtsDelete, districtsEdit, districtsList, districtsShowEdit, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
+import { commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsList, districtsShowEdit, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
 import main from './Reducers/main';
 import axios from 'axios';
 
@@ -10,11 +10,15 @@ export const actionsList = {
     'sections-show-edit': sectionsShowEdit,
     'sections-edit': sectionsEdit,
 
+
     'districts-create': districtsCreate,
     'districts-list': districtsList,
     'districts-delete': districtsDelete,
     'districts-show-edit': districtsShowEdit,
     'districts-edit': districtsEdit,
+
+    'common-list': commonList,
+    'district-section': districtSection
 }
 
 const url = 'http://localhost:3004/';

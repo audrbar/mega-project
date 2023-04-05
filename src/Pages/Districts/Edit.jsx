@@ -91,7 +91,7 @@ export default function Edit() {
                                 ) : (
                                     <img
                                         className="upload-image"
-                                        src={imgUrl + 'no.gif'}
+                                        src={imgUrl + 'no_img.png'}
                                         alt=""
                                     />
                                 )}
