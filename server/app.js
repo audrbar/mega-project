@@ -94,7 +94,7 @@ const createPhoto = (photo) => {
     const fileName = uuidv4() + '.' + type;
     fs.writeFileSync('./public/img/' + fileName, file);
 
-    return fileName
+    return fileName;
 }
 
 const deletePhoto = (id) => {
@@ -110,7 +110,6 @@ const deletePhoto = (id) => {
         }
     });
 }
-
 
 //*************** FRONT OFFICE ********************/
 
@@ -283,7 +282,7 @@ app.put('/admin/districts/:id', (req, res) => {
 
     let sql;
     let params;
-    const fileName = createPhoto(req.body.file);
+    let fileName = createPhoto(req.body.file);
 
     if (fileName || req.body.delImg) {
         deletePhoto(req.params.id);
