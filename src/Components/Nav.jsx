@@ -50,6 +50,11 @@ export default function Nav() {
                                 Naujas rajonas
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="comments-show-edit" className="nav-link">
+                                Pasiūlymų peržiūra
+                            </Link>
+                        </li>
                     </ul>
                     <span className="navbar-text">
                         <Link to="login" className="nav-link">

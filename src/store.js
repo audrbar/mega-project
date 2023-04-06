@@ -1,7 +1,8 @@
 import { createContext, useReducer, useState } from 'react';
-import { commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsList, districtsShowEdit, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
+import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsList, districtsShowEdit, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
 import main from './Reducers/main';
 import axios from 'axios';
+import { SHOW_MESSAGE } from './types';
 
 export const actionsList = {
     'sections-list': sectionsList,
@@ -10,15 +11,20 @@ export const actionsList = {
     'sections-show-edit': sectionsShowEdit,
     'sections-edit': sectionsEdit,
 
-
     'districts-create': districtsCreate,
     'districts-list': districtsList,
     'districts-delete': districtsDelete,
     'districts-show-edit': districtsShowEdit,
     'districts-edit': districtsEdit,
 
+    'comments-show-edit': commentsShowEdit,
+    'comment-show-hide': commentShowHide,
+    'comment-delete': commentDelete,
+
     'common-list': commonList,
-    'district-section': districtSection
+    'district-section': districtSection,
+    'add-comment': addComment,
+
 }
 
 const url = 'http://localhost:3004/';
@@ -61,6 +67,17 @@ export const Provider = (props) => {
                         setLoader(false);
                     }
 
+                })
+                .catch(error => {
+                    const errorAction = {};
+                    errorAction.payload = {
+                        msg: { text: 'ERROR.', type: 'danger' }
+                    }
+                    errorAction.type = SHOW_MESSAGE;
+                    errorAction.doDispach = doDispach;
+                    dispach(errorAction);
+
+                    setLoader(false);
                 })
         }
 

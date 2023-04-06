@@ -151,6 +151,59 @@ app.get('/comments/:did/:sid', (req, res) => {
     });
 });
 
+//*************** COMMENTS ********************/
+
+app.get('/admin/comments', (req, res) => {
+    const sql = `
+        SELECT c.id, comment, show_it, d.title AS district, s.title AS section
+        FROM comments AS c
+        INNER JOIN districts AS d
+        ON c.district_id = d.id
+        INNER JOIN sections AS s
+        ON c.section_id = s.id
+        ORDER BY c.id DESC
+    `;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json({ data: result });
+    });
+});
+
+app.put('/admin/comments-edit/:id', (req, res) => {
+
+    let params;
+
+    const sql = `
+        UPDATE comments
+        SET show_it = IF(show_it = 1, 0, 1)
+        WHERE id = ?
+    `;
+    params = [req.params.id];
+
+    con.query(sql, params, (err) => {
+        if (err) throw err;
+        res.json({
+            msg: { text: 'Pasiūlymo statusas pakeistas', type: 'info' }
+        });
+    });
+});
+
+app.delete('/admin/comments/:id', (req, res) => {
+
+    const sql = `
+        DELETE FROM comments
+        WHERE id = ?
+    `;
+    con.query(sql, [req.params.id], (err) => {
+        if (err) throw err;
+        res.json({
+            msg: { text: 'Komentaras panaikintas. Nebėra.', type: 'info' }
+        });
+    });
+});
+
+
+
 //*************** SECTIONS ********************/
 
 app.get('/admin/sections', (req, res) => {
