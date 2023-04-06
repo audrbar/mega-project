@@ -80,8 +80,6 @@ export const Provider = (props) => {
                     setLoader(false);
                 })
         }
-
-
     }
 
     const doDispach = action => {

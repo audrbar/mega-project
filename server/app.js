@@ -30,46 +30,41 @@ app.use(
 );
 app.use(express.json());
 
-// const doAuth = function (req, res, next) {
+const doAuth = function (req, res, next) {
 
-//     if (req.url.indexOf('/numbers') === 0) {
-//         const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
-//         const user = req.cookies.magicNumberSession ?
-//             users.find(u => u.session === req.cookies.magicNumberSession) :
-//             null;
-//         if (user && (user.role === 'admin' || user.role === 'manager')) {
-//             next();
-//         } else {
-//             res.status(401).json({});
-//         }
-//     } else if (req.url.indexOf('/users') === 0) {
-//         const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
-//         const user = req.cookies.magicNumberSession ?
-//             users.find(u => u.session === req.cookies.magicNumberSession) :
-//             null;
-//         if (user && (user.role === 'admin')) {
-//             next();
-//         } else {
-//             res.status(401).json({});
-//         }
-//     } else {
-//         next();
-//     }
-// }
+    if (req.url.indexOf('/numbers') === 0) {
+        const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
+        const user = req.cookies.magicNumberSession ?
+            users.find(u => u.session === req.cookies.magicNumberSession) :
+            null;
+        if (user && (user.role === 'admin' || user.role === 'manager')) {
+            next();
+        } else {
+            res.status(401).json({});
+        }
+    } else if (req.url.indexOf('/users') === 0) {
+        const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
+        const user = req.cookies.magicNumberSession ?
+            users.find(u => u.session === req.cookies.magicNumberSession) :
+            null;
+        if (user && (user.role === 'admin')) {
+            next();
+        } else {
+            res.status(401).json({});
+        }
+    } else {
+        next();
+    }
+}
 
 // app.use(doAuth);
 
-//*************** PHOTO ********************/
-
 const convertPhoto = (photo) => {
-
     let type = 'unknown';
     let file = null;
-
     if (photo === null) {
         return [type, file];
     }
-
     if (photo.indexOf('data:image/png;base64,') === 0) {
         type = 'png';
         file = Buffer.from(photo.replace('data:image/png;base64,', ''), 'base64');
@@ -79,22 +74,19 @@ const convertPhoto = (photo) => {
     } else {
         file = Buffer.from(photo, 'base64');
     }
-
     return [type, file];
 }
 
+//*************** PHOTO ********************/
+
 const createPhoto = (photo) => {
-
     const [type, file] = convertPhoto(photo);
-
     if (file === null) {
         return null
     }
-
     const fileName = uuidv4() + '.' + type;
     fs.writeFileSync('./public/img/' + fileName, file);
-
-    return fileName;
+    return fileName
 }
 
 const deletePhoto = (id) => {
@@ -143,11 +135,24 @@ app.get('/comments/:did/:sid', (req, res) => {
         UNION
         SELECT id, 'comment', comment
         FROM comments
-        WHERE section_id = ? AND district_id = ?
+        WHERE section_id = ? AND district_id = ? AND show_it = 1
     `;
     con.query(sql, [req.params.did, req.params.sid, req.params.sid, req.params.did], (err, result) => {
         if (err) throw err;
         res.json({ data: result });
+    });
+});
+
+app.post('/comments/:did/:sid', (req, res) => {
+    const sql = `
+        INSERT INTO comments (comment, district_id, section_id)
+        VALUES (?, ?, ?)
+    `;
+    con.query(sql, [req.body.text, req.params.did, req.params.sid], (err, result) => {
+        if (err) throw err;
+        res.json({
+            msg: { text: 'Jūsų pasiūlymas priimtas', type: 'info' }
+        });
     });
 });
 
@@ -170,9 +175,7 @@ app.get('/admin/comments', (req, res) => {
 });
 
 app.put('/admin/comments-edit/:id', (req, res) => {
-
     let params;
-
     const sql = `
         UPDATE comments
         SET show_it = IF(show_it = 1, 0, 1)
@@ -188,7 +191,7 @@ app.put('/admin/comments-edit/:id', (req, res) => {
     });
 });
 
-app.delete('/admin/comments/:id', (req, res) => {
+app.delete('/admin/comments/o/:id', (req, res) => {
 
     const sql = `
         DELETE FROM comments
@@ -201,8 +204,6 @@ app.delete('/admin/comments/:id', (req, res) => {
         });
     });
 });
-
-
 
 //*************** SECTIONS ********************/
 
@@ -229,6 +230,7 @@ app.get('/admin/sections/:id', (req, res) => {
         res.json({ data: result[0] });
     });
 });
+
 
 app.post('/admin/sections', (req, res) => {
     const sql = `
@@ -257,14 +259,17 @@ app.delete('/admin/sections/:id', (req, res) => {
     });
 });
 
-app.put('/admin/sections/:id', (req, res) => {
 
+
+
+app.put('/admin/sections/:id', (req, res) => {
+    let params;
     const sql = `
         UPDATE sections
         SET title = ?
         WHERE id = ?
     `;
-    const params = [req.body.title, req.params.id];
+    params = [req.body.title, req.params.id];
 
     con.query(sql, params, (err) => {
         if (err) throw err;
@@ -273,6 +278,7 @@ app.put('/admin/sections/:id', (req, res) => {
         });
     });
 });
+
 
 //*************** DISTRICTS ********************/
 
@@ -329,7 +335,6 @@ app.delete('/admin/districts/:id', (req, res) => {
         });
     });
 });
-
 
 app.put('/admin/districts/:id', (req, res) => {
 
