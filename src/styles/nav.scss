@@ -1,0 +1,19 @@
+.navbar-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: darkgreen;
+    .logo-sun {
+        font-size: 80px;
+    }
+    .nav-logo {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+        padding-left: 10px;
+    }
+}
+
+.navbar-brand:hover {
+    color: #013901;
+}

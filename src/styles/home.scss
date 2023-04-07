@@ -1,13 +1,136 @@
-.home {
+@import '../styles/font-awesome.min.css';
+
+section {
+    display: block;
     width: 100%;
-    min-height: 100vh;
+    color: #063a3c;
+    h6 {
+            font-weight: 100;
+        }
+}
+
+.home {
+    min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: darkcyan;
+}
 
-    h6 {
-        font-weight: 100;
+.back-ground-image,
+.back-ground-image1 {
+    position: relative;
+    opacity: 0.99;
+}
+
+.back-ground-image::before {
+    content: '';
+    background: url('http://localhost:3000/img/hero.png') no-repeat 0 50%;
+    position: absolute;
+    background-size: cover;
+    inset: 0;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.back-ground-image1::before {
+    content: '';
+    background: url('http://localhost:3000/img/story1.png') no-repeat 0 50%;
+    position: absolute;
+    background-size: cover;
+    border-radius: 0.75rem;
+    inset: 0;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.pradek {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background-color: white;
+    border-radius: 1.75rem;
+    font-size: 1.125rem;
+    margin-top: 2rem;
+    min-height: 3.5rem;
+    min-width: 16rem;
+    cursor: pointer;
+    .dabar {
+        text-decoration: none;
+        color: #02a95c;
     }
 }
+
+
+
+.start {
+    background-color: #87c280;
+    .steps {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+            .step {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+                .step-number {
+                background-color: #063a3c;
+                border-radius: 50%;
+                color: white;
+                margin: 20px;
+                padding: 10px;
+                width: 55px;
+                text-align: center;
+                }
+            }
+    }
+}
+
+.footer {
+    padding: 30px;
+    background-color: #c5c3c3;
+    .steps {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        .step {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+
+            .step-number {
+                background-color: #063a3c;
+                border-radius: 50%;
+                color: white;
+                margin: 20px;
+                padding: 10px;
+                width: 55px;
+                text-align: center;
+            }
+        }
+    }
+
+    .copy-right {
+        text-align: center;
+        margin: 0;
+    }
+}
+
+

@@ -1,11 +1,16 @@
 import Link from './Link';
+import '../styles/nav.scss';
 
 export default function Nav() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-md navbar-light bg-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    Navbar
+                    <i class="fa fa-sun-o fa-lg"></i>
+                    <span className="nav-logo">
+                        <span>Bendruomenė</span>
+                        <span>bendruomenei</span>
+                    </span>
                 </a>
                 <button
                     className="navbar-toggler"
@@ -26,13 +31,33 @@ export default function Nav() {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link action="common-list" className="nav-link">
+                                Pasiūlymai
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link action="sections-list" className="nav-link">
+                                Sritys
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link action="districts-list" className="nav-link">
+                                Rajonai
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link to="sections-create" className="nav-link">
                                 Nauja Sritis
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link action="sections-list" className="nav-link">
-                                Sriciu sarasas
+                            <Link to="districts-create" className="nav-link">
+                                Naujas rajonas
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="comments-show-edit" className="nav-link">
+                                Pasiūlymų peržiūra
                             </Link>
                         </li>
                     </ul>
