@@ -1,13 +1,77 @@
 .home {
     width: 100%;
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: darkcyan;
+    color:#045b5e;
 
     h6 {
         font-weight: 100;
     }
 }
+
+.back-ground-image,
+.back-ground-image1 {
+    position: relative;
+    opacity: 0.99;
+}
+
+.back-ground-image::before {
+    content: '';
+    background: url('http://localhost:3000/img/hero.png') no-repeat 0 50%;
+    position: absolute;
+    background-size: cover;
+    inset: 0;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.back-ground-image1::before {
+    content: '';
+    background: url('http://localhost:3000/img/story1.png') no-repeat 0 50%;
+    position: absolute;
+    background-size: cover;
+    border-radius: 0.75rem;
+    inset: 0;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.start {
+    background-color: cadetblue;
+    .middle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2;
+        justify-content: center;
+        padding: 40px 0;
+    }
+    .steps-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    .steps {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            .steps-number {
+                background-color: darkolivegreen;
+                border-radius: 50%;
+                color: white;
+                margin: 10px;
+                width: 2.5rem;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+
+
