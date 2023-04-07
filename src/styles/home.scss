@@ -1,15 +1,18 @@
-.home {
+section {
+    display: block;
     width: 100%;
+    color: #063a3c;
+    h6 {
+            font-weight: 100;
+        }
+}
+
+.home {
     min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color:#045b5e;
-
-    h6 {
-        font-weight: 100;
-    }
 }
 
 .back-ground-image,
@@ -39,39 +42,72 @@
     z-index: -1;
 }
 
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2;
+    justify-content: center;
+    padding: 40px 0;
+}
+
 .start {
     background-color: cadetblue;
-    .middle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2;
-        justify-content: center;
-        padding: 40px 0;
-    }
-    .steps-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
     .steps {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+            .step {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             margin-bottom: 40px;
-            .steps-number {
-                background-color: darkolivegreen;
+                .step-number {
+                background-color: #063a3c;
                 border-radius: 50%;
                 color: white;
-                margin: 10px;
-                width: 2.5rem;
-                align-items: center;
-                justify-content: center;
+                margin: 20px;
+                padding: 10px;
+                width: 55px;
+                text-align: center;
+                }
             }
-        }
     }
 }
 
+.footer {
+    padding: 30px;
+    .steps {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        .step {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+
+            .step-number {
+                background-color: #063a3c;
+                border-radius: 50%;
+                color: white;
+                margin: 20px;
+                padding: 10px;
+                width: 55px;
+                text-align: center;
+            }
+        }
+    }
+
+    .copy-right {
+        text-align: center;
+        margin: 0;
+    }
+}
 
 
