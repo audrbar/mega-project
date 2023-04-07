@@ -1,11 +1,16 @@
 import Link from './Link';
+import '../styles/nav.scss';
 
 export default function Nav() {
     return (
         <nav className="navbar navbar-expand-md navbar-light bg-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    Navbar
+                    <i class="fa fa-sun-o fa-lg"></i>
+                    <span className="nav-logo">
+                        <span>Bendruomenė</span>
+                        <span>bendruomenei</span>
+                    </span>
                 </a>
                 <button
                     className="navbar-toggler"

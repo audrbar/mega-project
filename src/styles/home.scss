@@ -1,3 +1,5 @@
+@import '../styles/font-awesome.min.css';
+
 section {
     display: block;
     width: 100%;
@@ -38,7 +40,7 @@ section {
     background-size: cover;
     border-radius: 0.75rem;
     inset: 0;
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: -1;
 }
 
@@ -51,8 +53,28 @@ section {
     padding: 40px 0;
 }
 
+.pradek {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background-color: white;
+    border-radius: 1.75rem;
+    font-size: 1.125rem;
+    margin-top: 2rem;
+    min-height: 3.5rem;
+    min-width: 16rem;
+    cursor: pointer;
+    .dabar {
+        text-decoration: none;
+        color: #02a95c;
+    }
+}
+
+
+
 .start {
-    background-color: cadetblue;
+    background-color: #87c280;
     .steps {
         display: flex;
         flex-direction: row;
@@ -79,6 +101,7 @@ section {
 
 .footer {
     padding: 30px;
+    background-color: #c5c3c3;
     .steps {
         display: flex;
         flex-direction: row;
