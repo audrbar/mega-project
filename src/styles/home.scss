@@ -29,7 +29,7 @@ section {
     position: absolute;
     background-size: cover;
     inset: 0;
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: -1;
 }
 
@@ -40,7 +40,7 @@ section {
     background-size: cover;
     border-radius: 0.75rem;
     inset: 0;
-    opacity: 0.3;
+    opacity: 0.2;
     z-index: -1;
 }
 
@@ -71,8 +71,6 @@ section {
     }
 }
 
-
-
 .start {
     background-color: #87c280;
     .steps {
@@ -80,35 +78,85 @@ section {
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
+        flex-basis: auto;
             .step {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 40px;
-                .step-number {
-                background-color: #063a3c;
-                border-radius: 50%;
-                color: white;
-                margin: 20px;
-                padding: 10px;
-                width: 55px;
+                flex: 1;
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0 10px;
+                justify-content: center;
                 text-align: center;
-                }
+                margin-bottom: 40px;
+                    .step-number {
+                    background-color: #063a3c;
+                    border-radius: 50%;
+                    color: white;
+                    margin: 20px;
+                    padding: 10px;
+                    width: 55px;
+                    text-align: center;
+                    }
             }
     }
 }
 
+.stories {
+    background-color: #fdf4eb;
+}
+
+.card-group {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    column-gap: 10px;
+}
+
+.card-group::-webkit-scrollbar {
+    display: none;
+}
+
+.stories-title {
+    background-color:#fdf4eb;
+    border-radius:20px;
+    border: 1px solid #fbbc8c;
+    padding: 10px;
+    left: 38%;
+    top: 100px;
+    text-align: center;
+}
+
+.card-img {
+    height: 300px;
+}
+
+.card-hover {
+    transition: all .2s ease-in-out;
+}
+
+.card-hover:hover {
+    transform: scale(1.02);
+}
+
+.link-hover {
+    transition: all .2s ease-in-out;
+}
+
+.link-hover:hover {
+    transform: scale(1.05);
+}
+
 .footer {
     padding: 30px;
-    background-color: #c5c3c3;
+    background-color: #e7e7e7;
     .steps {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-
+        text-align: center;
         .step {
+            flex: 1;
             display: inline-flex;
             flex-direction: column;
             align-items: center;
@@ -116,13 +164,14 @@ section {
             margin-bottom: 40px;
 
             .step-number {
-                background-color: #063a3c;
+                background-color: #88479c;
                 border-radius: 50%;
                 color: white;
                 margin: 20px;
                 padding: 10px;
-                width: 55px;
+                width: 60px;
                 text-align: center;
+                cursor: pointer;
             }
         }
     }
@@ -133,4 +182,8 @@ section {
     }
 }
 
-
+@media (max-width: 576px) {
+    .steps {
+            flex-direction: column;
+    }
+}

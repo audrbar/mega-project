@@ -1,5 +1,6 @@
 import '../styles/home.scss';
 import Link from '../Components/Link';
+import List from './Districts/List';
 
 export default function Home() {
     return (
@@ -8,7 +9,7 @@ export default function Home() {
                 <div className="home back-ground-image">
                     <h1>Pateik savo idėją!</h1>
                     <h5>Ir gauk sutelktąjį bendruomenės finasavimą</h5>
-                    <span className="pradek">
+                    <span className="pradek link-hover">
                         <Link action="common-list" className="nav-link dabar">
                             <i class="fa fa-magic"></i> Pradėk dabar
                         </Link>
@@ -48,13 +49,14 @@ export default function Home() {
                 <div className="home back-ground-image1">
                     <h1>Prisidėk</h1>
                     <h5>Finansuok bendruomenei svarbią veiklą!</h5>
-                    <span className="pradek">
+                    <span className="pradek link-hover">
                         <Link action="common-list" className="nav-link dabar">
                             <i class="fa fa-magic"></i> Paremk dabar
                         </Link>
                     </span>
                 </div>
             </section>
+            <List />
             <section className="footer">
                 <div className="middle">
                     <h2>Apie mus</h2>
@@ -77,7 +79,7 @@ export default function Home() {
                         <h2 className="step-number">
                             <i class="fa fa-envelope"></i>
                         </h2>
-                        <h6>Rašyk mums</h6>
+                        <h6>Rašyk</h6>
                     </div>
                 </div>
                 <h5 className="copy-right">2023 Bendruomenė-bendruomenei</h5>
