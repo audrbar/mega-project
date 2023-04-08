@@ -15,7 +15,9 @@ export const DISTRICTS_SHOW_CREATE = 501 // show create new item in districts
 export const DISTRICTS_CREATE = 2002 // create new item in districts
 export const DISTRICTS_DELETE = 2003 // delete item in districts
 export const DISTRICTS_SHOW_EDIT = 2004 // show districts item edit
-export const DISTRICTS_EDIT = 2005 // edit districts item
+export const DISTRICTS_SHOW_EDIT_DONATE = 2005 // show districts item edit
+export const DISTRICTS_EDIT = 2006 // edit districts item
+export const DISTRICTS_EDIT_DONATE = 2007 // edit districts item
 
 export const COMMENTS_SHOW_EDIT = 4001 // show list of comments with edit
 export const COMMENT_SHOW_HIDE = 4002 // show or hide comment

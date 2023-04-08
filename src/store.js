@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState } from 'react';
-import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsList, districtsShowEdit, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
+import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsEditDonate, districtsList, districtsShowEdit, districtsShowEditDonate, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
 import main from './Reducers/main';
 import axios from 'axios';
 import { SHOW_MESSAGE } from './types';
@@ -15,7 +15,9 @@ export const actionsList = {
     'districts-list': districtsList,
     'districts-delete': districtsDelete,
     'districts-show-edit': districtsShowEdit,
+    'districts-show-edit-donate': districtsShowEditDonate,
     'districts-edit': districtsEdit,
+    'districts-edit-donate': districtsEditDonate,
 
     'comments-show-edit': commentsShowEdit,
     'comment-show-hide': commentShowHide,
@@ -24,7 +26,6 @@ export const actionsList = {
     'common-list': commonList,
     'district-section': districtSection,
     'add-comment': addComment,
-
 }
 
 const url = 'http://localhost:3004/';
@@ -66,7 +67,6 @@ export const Provider = (props) => {
                     if (!action.payload.show) {
                         setLoader(false);
                     }
-
                 })
                 .catch(error => {
                     const errorAction = {};

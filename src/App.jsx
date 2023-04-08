@@ -23,6 +23,7 @@ import CommentsEdit from './Pages/Comments/List';
 
 import CommonList from './Pages/Front/List';
 import Comments from './Pages/Front/Comments';
+import { EditDonate } from './Pages/Districts/EditDonate';
 
 function App() {
     const { page, pageTop, messages, loader } = useContext(Store);
@@ -47,6 +48,7 @@ function App() {
             {page === 'districts-create' ? <DistrictsCreate /> : null}
             {page === 'districts-list' ? <DistrictsList /> : null}
             {page === 'districts-show-edit' ? <DistrictsEdit /> : null}
+            {page === 'districts-show-edit-donate' ? <EditDonate /> : null}
 
             {page === 'common-list' ? <CommonList /> : null}
             {page === 'comments' ? <Comments /> : null}

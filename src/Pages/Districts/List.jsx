@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Store, actionsList } from '../../store';
+import Link from '../../Components/Link';
 import '../../styles/home.scss';
 
 export default function List() {
@@ -8,10 +9,14 @@ export default function List() {
     return (
         <div className="stories container-fluid position-relative">
             <div className="row justify-content-center">
+                <div className='d-flex flex-column align-items-center justify-content-center my-4'>
+                    <h1>Peržiūrėk ir paremk</h1>
+                    <h5>Bendruomenės finansuojamą idėją</h5>
+                </div>
                 <div className="card-group flex-nowrap align-content-stretch">
-                    {store?.data?.map((s) => (
-                        <div className="col-xl-3 col-md-4 col-sm-6 align-content-stretch">
-                            <div key={s.id} className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-100 stories">
+                    {store?.data?.map?.((s) => (
+                        <div key={s.id} className="col-xl-3 col-md-4 col-sm-6 align-content-stretch">
+                            <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-100 stories">
                                 <div className="card-img-top">
                                     {s.photo ? (
                                         <img
@@ -27,25 +32,25 @@ export default function List() {
                                     <div className="card-title">
                                         <h4>{s.title}</h4>
                                     </div>
-                                    <p class="card-text">{s.description}</p>
-                                    <p class="card-text">Autorius: {s.yourName}</p>
-                                    <h6 class="card-text">Biudžetas: {s.budget}</h6>
-                                    <h6 class="card-text">Surinkta: {s.amount}</h6>
-                                    <h6 class="card-text">Trūksta: {s.budget - s.amount}</h6>
+                                    <p className="card-text">{s.description}</p>
+                                    <p className="card-text">Autorius: {s.yourName}</p>
+                                    <h6 className="card-text">Biudžetas: {s.budget}</h6>
+                                    <h6 className="card-text">Surinkta: {s.amount}</h6>
+                                    <h6 className="card-text">Trūksta: {s.budget - s.amount}</h6>
                                     <button
                                         type="button"
                                         className="btn btn-primary"
                                         onClick={(_) =>
                                             dispach(
                                                 actionsList[
-                                                    'districts-show-edit'
+                                                    'districts-show-edit-donate'
                                                 ](s.id)
                                             )
                                         }
                                     >
-                                        Redaguoti
+                                        Prisidėti
                                     </button>
-                                    <button
+                                    {/* <button
                                         type="button"
                                         className="btn btn-danger"
                                         onClick={(_) =>
@@ -57,16 +62,12 @@ export default function List() {
                                         }
                                     >
                                         Ištrinti
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-            </div>
-            <div className='position-absolute stories-title'>
-                <h1>Peržiūrėk</h1>
-                <h5>Bendruomenės finansuojamas idėjas</h5>
             </div>
         </div >
     );

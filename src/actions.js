@@ -1,4 +1,4 @@
-import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICT_SECTION, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
+import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_EDIT_DONATE, DISTRICTS_SHOW_EDIT_DONATE, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICT_SECTION, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
 
 export const navigate = to => {
     return {
@@ -20,13 +20,14 @@ export const sectionsList = _ => {
     }
 }
 
-export const districtsList = _ => {
+export const districtsList = (disableNavigate = false) => {
     return {
         type: DISTRICTS_LIST,
         payload: {
             url: 'admin/districts',
             method: 'get',
-            page: 'districts-list'
+            page: 'districts-list',
+            disableNavigate
         }
     }
 }
@@ -42,7 +43,6 @@ export const commonList = _ => {
     }
 }
 
-
 export const commentsShowEdit = _ => {
     return {
         type: COMMENTS_SHOW_EDIT,
@@ -54,6 +54,38 @@ export const commentsShowEdit = _ => {
     }
 }
 
+export const sectionsShowEdit = id => {
+    return {
+        type: SECTIONS_SHOW_EDIT,
+        payload: {
+            url: 'admin/sections/' + id,
+            method: 'get',
+            page: 'sections-show-edit'
+        }
+    }
+}
+
+export const districtsShowEdit = id => {
+    return {
+        type: DISTRICTS_SHOW_EDIT,
+        payload: {
+            url: 'admin/districts/' + id,
+            method: 'get',
+            page: 'districts-show-edit'
+        }
+    }
+}
+
+export const districtsShowEditDonate = id => {
+    return {
+        type: DISTRICTS_SHOW_EDIT_DONATE,
+        payload: {
+            url: 'admin/districts/' + id,
+            method: 'get',
+            page: 'districts-show-edit-donate'
+        }
+    }
+}
 
 export const districtSection = ([did, sid]) => {
     return {
@@ -107,7 +139,6 @@ export const districtsCreate = body => {
     }
 }
 
-
 export const sectionsDelete = id => {
     return {
         type: SECTIONS_DELETE,
@@ -144,28 +175,6 @@ export const commentDelete = id => {
     }
 }
 
-export const sectionsShowEdit = id => {
-    return {
-        type: SECTIONS_SHOW_EDIT,
-        payload: {
-            url: 'admin/sections/' + id,
-            method: 'get',
-            page: 'sections-show-edit'
-        }
-    }
-}
-
-export const districtsShowEdit = id => {
-    return {
-        type: DISTRICTS_SHOW_EDIT,
-        payload: {
-            url: 'admin/districts/' + id,
-            method: 'get',
-            page: 'districts-show-edit'
-        }
-    }
-}
-
 export const sectionsEdit = (body, id) => {
     return {
         type: SECTIONS_EDIT,
@@ -194,6 +203,19 @@ export const commentShowHide = (id) => {
 export const districtsEdit = (body, id) => {
     return {
         type: DISTRICTS_EDIT,
+        payload: {
+            url: 'admin/districts/' + id,
+            method: 'put',
+            body,
+            show: 'districts-list',
+            pauseShow: 1000
+        }
+    }
+}
+
+export const districtsEditDonate = (body, id) => {
+    return {
+        type: DISTRICTS_EDIT_DONATE,
         payload: {
             url: 'admin/districts/' + id,
             method: 'put',

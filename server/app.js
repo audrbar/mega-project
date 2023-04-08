@@ -340,7 +340,10 @@ app.put('/admin/districts/:id', (req, res) => {
 
     let sql;
     let params;
-    let fileName = createPhoto(req.body.file);
+    let fileName;
+    if (req.body.file) {
+        fileName = createPhoto(req.body.file);
+    }
 
     if (fileName || req.body.delImg) {
         deletePhoto(req.params.id);

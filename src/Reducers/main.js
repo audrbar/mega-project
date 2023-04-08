@@ -1,4 +1,4 @@
-import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICT_SECTION, NAVIGATE, REMOVE_MESSAGE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, SHOW_MESSAGE } from "../types";
+import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_EDIT_DONATE, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICTS_SHOW_EDIT_DONATE, DISTRICT_SECTION, NAVIGATE, REMOVE_MESSAGE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, SHOW_MESSAGE } from "../types";
 import { v4 as uuidv4 } from 'uuid';
 import { actionsList } from '../store';
 
@@ -26,11 +26,14 @@ export default function main(state, action) {
         case SECTIONS_SHOW_EDIT:
         case DISTRICTS_LIST:
         case DISTRICTS_SHOW_EDIT:
+        case DISTRICTS_SHOW_EDIT_DONATE:
         case COMMON_LIST:
         case DISTRICT_SECTION:
         case COMMENTS_SHOW_EDIT:
-            c.pageTop = 'nav';
-            c.page = action.payload.page;
+            if (!action.payload.disableNavigate) {
+                c.pageTop = 'nav';
+                c.page = action.payload.page;
+            }
             c.data = action.payload.data;
             return c;
 
@@ -40,6 +43,7 @@ export default function main(state, action) {
         case DISTRICTS_CREATE:
         case DISTRICTS_DELETE:
         case DISTRICTS_EDIT:
+        case DISTRICTS_EDIT_DONATE:
         case ADD_COMMENT:
         case COMMENT_SHOW_HIDE:
         case COMMENT_DELETE:

@@ -6,7 +6,7 @@ export default function Nav() {
         <nav className="navbar navbar-expand-md navbar-light bg-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    <i class="fa fa-sun-o fa-lg"></i>
+                    <i className="fa fa-sun-o fa-lg"></i>
                     <span className="nav-logo">
                         <span>Bendruomenė</span>
                         <span>bendruomenei</span>
@@ -31,8 +31,13 @@ export default function Nav() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link action="common-list" className="nav-link">
-                                Pasiūlymai
+                            <Link action="districts-list" className="nav-link">
+                                Finansuojama
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="districts-create" className="nav-link">
+                                Pateik idėją
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -41,23 +46,18 @@ export default function Nav() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link action="districts-list" className="nav-link">
-                                Finansuojami pasiūlymai
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="sections-create" className="nav-link">
                                 Nauja Sritis
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="districts-create" className="nav-link">
-                                Naujas pasiūlymas
+                            <Link action="common-list" className="nav-link">
+                                Komentarai
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="comments-show-edit" className="nav-link">
-                                Pasiūlymų peržiūra
+                                Komentarų peržiūra
                             </Link>
                         </li>
                     </ul>

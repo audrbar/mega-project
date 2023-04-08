@@ -1,8 +1,18 @@
 import '../styles/home.scss';
+import { useEffect, useContext } from 'react';
 import Link from '../Components/Link';
 import ListFinished from './Districts/ListFinished';
+import { Store } from '../store';
+import { districtsList } from '../actions';
 
 export default function Home() {
+
+    const { dispach } = useContext(Store);
+
+    useEffect(() => {
+        dispach(districtsList(true));
+    }, []);
+
     return (
         <>
             <section id="hero">
@@ -11,7 +21,7 @@ export default function Home() {
                     <h5>Ir gauk sutelktąjį bendruomenės finasavimą</h5>
                     <span className="pradek link-hover">
                         <Link to="districts-create" className="nav-link dabar">
-                            <i class="fa fa-magic"></i> Pradėk dabar
+                            <i className="fa fa-magic"></i> Pradėk dabar
                         </Link>
                     </span>
                 </div>
@@ -23,12 +33,12 @@ export default function Home() {
                 </div>
                 <div className="steps">
                     <div className="step">
-                        <h2 className="step-number">1</h2>
+                        <h2 className="step-number link-hover">1</h2>
                         <h5>Registruok savo idėją</h5>
                         <h6>Įrašyk savo vardą, gyvenamąją vietą</h6>
                     </div>
                     <div className="step">
-                        <h2 className="step-number">2</h2>
+                        <h2 className="step-number link-hover">2</h2>
                         <h5>Įkelk pasakojimą</h5>
                         <h6>
                             Aprašyk savo sumanymą, papildyk jį vaizdo ir garso
@@ -36,7 +46,7 @@ export default function Home() {
                         </h6>
                     </div>
                     <div className="step">
-                        <h2 className="step-number">3</h2>
+                        <h2 className="step-number link-hover">3</h2>
                         <h5>Nurodyk siekiamą biudžetą</h5>
                         <h6>
                             Įrašyk veiklai užtikrinti reikiamą lėšų kiekį,
@@ -50,8 +60,8 @@ export default function Home() {
                     <h1>Prisidėk</h1>
                     <h5>Finansuok bendruomenei svarbią veiklą!</h5>
                     <span className="pradek link-hover">
-                        <Link action="common-list" className="nav-link dabar">
-                            <i class="fa fa-magic"></i> Paremk dabar
+                        <Link action="districts-list" className="nav-link dabar">
+                            <i className="fa fa-magic"></i> Paremk dabar
                         </Link>
                     </span>
                 </div>
@@ -64,20 +74,20 @@ export default function Home() {
                 </div>
                 <div className="steps">
                     <div className="step">
-                        <h2 className="step-number">
-                            <i class="fa fa-map"></i>
+                        <h2 className="step-number link-hover">
+                            <i className="fa fa-map"></i>
                         </h2>
                         <h6 className='text-black'>Aplankyk</h6>
                     </div>
                     <div className="step">
-                        <h2 className="step-number">
-                            <i class="fa fa-phone"></i>
+                        <h2 className="step-number link-hover">
+                            <i className="fa fa-phone"></i>
                         </h2>
                         <h6 className='text-black'>Skambink</h6>
                     </div>
                     <div className="step">
-                        <h2 className="step-number">
-                            <i class="fa fa-envelope"></i>
+                        <h2 className="step-number link-hover">
+                            <i className="fa fa-envelope"></i>
                         </h2>
                         <h6 className='text-black'>Rašyk</h6>
                     </div>

@@ -11,7 +11,7 @@ export default function Link({ to, children, className, action, data }) {
         if (to) {
             dispach(navigate(to));
         } else {
-            dispach(actionsList[action](data || null));
+            dispach(actionsList[action](data));
         }
     };
 

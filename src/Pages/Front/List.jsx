@@ -12,7 +12,7 @@ export default function List() {
                 <div className="col-12">
                     <div className="card m-5">
                         <div className="card-header">
-                            <h1 className="list-title">Pasiūlymų sąrašas</h1>
+                            <h1 className="list-title">Komentarų sąrašas</h1>
                         </div>
                         <div className="card-body">
                             <ul className="list-group list-group-flush">
@@ -32,6 +32,7 @@ export default function List() {
                                                                     imgUrl +
                                                                     d.photo
                                                                 }
+                                                                className="card-img"
                                                                 alt="nice"
                                                             ></img>
                                                         ) : null}
@@ -41,7 +42,7 @@ export default function List() {
                                                     <ul className="list-group list-group-flush">
                                                         {store?.data?.map((s) =>
                                                             s.type ===
-                                                            'section' ? (
+                                                                'section' ? (
                                                                 <li
                                                                     key={s.id}
                                                                     className="list-group-item"
