@@ -1,6 +1,6 @@
 import '../styles/home.scss';
 import Link from '../Components/Link';
-import List from './Districts/List';
+import ListFinished from './Districts/ListFinished';
 
 export default function Home() {
     return (
@@ -10,7 +10,7 @@ export default function Home() {
                     <h1>Pateik savo idėją!</h1>
                     <h5>Ir gauk sutelktąjį bendruomenės finasavimą</h5>
                     <span className="pradek link-hover">
-                        <Link action="common-list" className="nav-link dabar">
+                        <Link to="districts-create" className="nav-link dabar">
                             <i class="fa fa-magic"></i> Pradėk dabar
                         </Link>
                     </span>
@@ -56,34 +56,34 @@ export default function Home() {
                     </span>
                 </div>
             </section>
-            <List />
+            <ListFinished />
             <section className="footer">
                 <div className="middle">
                     <h2>Apie mus</h2>
-                    <h5>Sužinok daugiau apie projektą</h5>
+                    <h5 className="text-secondary">Sužinok daugiau apie projektą</h5>
                 </div>
                 <div className="steps">
                     <div className="step">
                         <h2 className="step-number">
                             <i class="fa fa-map"></i>
                         </h2>
-                        <h6>Aplankyk</h6>
+                        <h6 className='text-black'>Aplankyk</h6>
                     </div>
                     <div className="step">
                         <h2 className="step-number">
                             <i class="fa fa-phone"></i>
                         </h2>
-                        <h6>Skambink</h6>
+                        <h6 className='text-black'>Skambink</h6>
                     </div>
                     <div className="step">
                         <h2 className="step-number">
                             <i class="fa fa-envelope"></i>
                         </h2>
-                        <h6>Rašyk</h6>
+                        <h6 className='text-black'>Rašyk</h6>
                     </div>
                 </div>
-                <h5 className="copy-right">2023 Bendruomenė-bendruomenei</h5>
-                <h5 className="copy-right">&#169; Visos teisės saugomos</h5>
+                <h5 className="copy-right text-secondary">2023 Bendruomenė-bendruomenei</h5>
+                <h5 className="copy-right text-secondary">&#169; Visos teisės saugomos</h5>
             </section>
         </>
     );

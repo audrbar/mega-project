@@ -18,7 +18,8 @@ section {
 }
 
 .back-ground-image,
-.back-ground-image1 {
+.back-ground-image1,
+.back-ground-image2 {
     position: relative;
     opacity: 0.99;
 }
@@ -39,6 +40,18 @@ section {
     position: absolute;
     background-size: cover;
     border-radius: 0.75rem;
+    inset: 0;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.back-ground-image2::before {
+    content: '';
+    background: url('http://localhost:3000/img/story3.png') no-repeat 0 50%;
+    position: absolute;
+    background-size: cover;
+    border-radius: 0.75rem;
+    height: 100vh;
     inset: 0;
     opacity: 0.2;
     z-index: -1;
@@ -132,6 +145,7 @@ section {
 
 .card-hover {
     transition: all .2s ease-in-out;
+    align-content: stretch;
 }
 
 .card-hover:hover {

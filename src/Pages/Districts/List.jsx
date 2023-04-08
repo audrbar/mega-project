@@ -8,7 +8,7 @@ export default function List() {
     return (
         <div className="stories container-fluid position-relative">
             <div className="row justify-content-center">
-                <div className="card-group flex-nowrap">
+                <div className="card-group flex-nowrap align-content-stretch">
                     {store?.data?.map((s) => (
                         <div className="col-xl-3 col-md-4 col-sm-6 align-content-stretch">
                             <div key={s.id} className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-100 stories">
@@ -25,9 +25,13 @@ export default function List() {
                                 </div>
                                 <div className="card-body">
                                     <div className="card-title">
-                                        <span>{s.title}</span>
+                                        <h4>{s.title}</h4>
                                     </div>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text">{s.description}</p>
+                                    <p class="card-text">Autorius: {s.yourName}</p>
+                                    <h6 class="card-text">Biudžetas: {s.budget}</h6>
+                                    <h6 class="card-text">Surinkta: {s.amount}</h6>
+                                    <h6 class="card-text">Trūksta: {s.budget - s.amount}</h6>
                                     <button
                                         type="button"
                                         className="btn btn-primary"

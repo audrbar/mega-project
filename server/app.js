@@ -284,7 +284,7 @@ app.put('/admin/sections/:id', (req, res) => {
 
 app.get('/admin/districts', (req, res) => {
     const sql = `
-        SELECT id, title, photo
+        SELECT id, title, description, budget, amount, yourName, photo
         FROM districts
         ORDER BY title
     `;
@@ -296,7 +296,7 @@ app.get('/admin/districts', (req, res) => {
 
 app.get('/admin/districts/:id', (req, res) => {
     const sql = `
-        SELECT id, title, photo
+        SELECT id, title, description, budget, amount, yourName, photo
         FROM districts
         WHERE id = ?
     `;
@@ -308,13 +308,13 @@ app.get('/admin/districts/:id', (req, res) => {
 
 app.post('/admin/districts', (req, res) => {
     const sql = `
-        INSERT INTO districts (title, photo)
-        VALUES (?, ?)
+        INSERT INTO districts (title, description, budget, yourName, photo)
+        VALUES (?, ?, ?, ?, ?)
     `;
-    con.query(sql, [req.body.title, createPhoto(req.body.file)], (err) => {
+    con.query(sql, [req.body.title, req.body.description, req.body.budget, req.body.yourName, createPhoto(req.body.file)], (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Naujas rajonas pridėtas', type: 'success' }
+            msg: { text: 'Naujas pasiūlymas pridėtas', type: 'success' }
         });
     });
 });
@@ -331,7 +331,7 @@ app.delete('/admin/districts/:id', (req, res) => {
     con.query(sql, [req.params.id], (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Rajonas ištrintas', type: 'info' }
+            msg: { text: 'Pasiūlymas ištrintas', type: 'info' }
         });
     });
 });
@@ -346,23 +346,23 @@ app.put('/admin/districts/:id', (req, res) => {
         deletePhoto(req.params.id);
         sql = `
             UPDATE districts
-            SET title = ?, photo = ?
+            SET title = ?, description = ?, amount = ?, yourName = ?, photo = ?
             WHERE id = ?
         `;
-        params = [req.body.title, fileName, req.params.id];
+        params = [req.body.title, req.body.description, req.body.amount, req.body.yourName, fileName, req.params.id];
     } else {
         sql = `
             UPDATE districts
-            SET title = ?
+            SET title = ?, description = ?, amount = ?, yourName = ?
             WHERE id = ?
         `;
-        params = [req.body.title, req.params.id];
+        params = [req.body.title, req.body.description, req.body.amount, req.body.yourName, req.params.id];
     }
 
     con.query(sql, params, (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Rajonas pakeistas', type: 'info' }
+            msg: { text: 'Pasiūlymas patikslintas', type: 'info' }
         });
     });
 });

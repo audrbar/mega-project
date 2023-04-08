@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Store, actionsList } from '../../store';
+import '../../styles/home.scss';
 
 export default function List() {
     const { store, dispach } = useContext(Store);

@@ -42,7 +42,7 @@ export default function Nav() {
                         </li>
                         <li className="nav-item">
                             <Link action="districts-list" className="nav-link">
-                                Rajonai
+                                Finansuojami pasiūlymai
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -52,7 +52,7 @@ export default function Nav() {
                         </li>
                         <li className="nav-item">
                             <Link to="districts-create" className="nav-link">
-                                Naujas rajonas
+                                Naujas pasiūlymas
                             </Link>
                         </li>
                         <li className="nav-item">
