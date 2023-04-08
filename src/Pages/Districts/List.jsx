@@ -39,7 +39,7 @@ export default function List() {
                                     <h6 className="card-text">Trūksta: {s.budget - s.amount}</h6>
                                     <button
                                         type="button"
-                                        className="btn btn-primary"
+                                        className="btn btn-success"
                                         onClick={(_) =>
                                             dispach(
                                                 actionsList[
@@ -48,7 +48,7 @@ export default function List() {
                                             )
                                         }
                                     >
-                                        Prisidėti
+                                        Prisidėsiu
                                     </button>
                                     {/* <button
                                         type="button"

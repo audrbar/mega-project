@@ -9,8 +9,17 @@ section {
         }
 }
 
+.nav-item {
+    transition: all .2s ease-in-out;
+}
+
+.nav-item:hover {
+    color: #025d02;
+    transform: scale(1.023);
+}
+
 .home {
-    min-height: 70vh;
+    min-height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,9 +79,9 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 0;
     background-color: white;
     border-radius: 1.75rem;
+    border: 1px solid #02a95c;
     font-size: 1.125rem;
     margin-top: 2rem;
     min-height: 3.5rem;

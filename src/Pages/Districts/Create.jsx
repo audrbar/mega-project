@@ -2,7 +2,6 @@ import '../../styles/districts.scss';
 import { useContext, useState } from "react"
 import { actionsList, Store } from "../../store";
 import { useFile } from "../../Use/useFile";
-import Link from '../../Components/Link';
 
 export default function Create() {
 
@@ -33,31 +32,59 @@ export default function Create() {
 
     return (
         <section className="container-fluid back-ground-image2">
-            <div className="d-flex justify-content-center">
-                <div className="col-md-8">
+            <div className="d-flex justify-content-center ">
+                <div className="col-md-6">
                     <div className="card m-5">
                         <div className="card-body">
                             <div className="mb-3">
                                 <label className="form-label">Pateik savo pasiūlymą</label>
-                                <input type="text" className="form-control" value={title} onChange={e => setTitle(e.target.value)} />
-                                <div className="form-text">Nurodyk pasiūlymo pavadinimą</div>
+                                <input
+                                    type="text"
+                                    className="form-control fw-light fst-italic fs-6"
+                                    value={title}
+                                    onChange={e => setTitle(e.target.value)}
+                                    placeholder="nurodyk pasiūlymo pavadinimą..."
+                                />
                             </div>
                             <div className="mb-3">
-                                <textarea maxlength='1000' minlength='20'
-                                    type="text" className="form-control" value={description} onChange={e => setDescription(e.target.value)} />
-                                <div className="form-text">Aprašyk idėją</div>
+                                <textarea
+                                    maxlength='1000'
+                                    minlength='20'
+                                    type="text"
+                                    className="form-control fw-light fst-italic fs-6"
+                                    value={description}
+                                    onChange={e => setDescription(e.target.value)}
+                                    placeholder="aprašyk savo idėją..."
+                                />
                             </div>
                             <div className="mb-3">
-                                <input type="number" min="10" max="10000" className="form-control" value={budget} onChange={e => setBudget(e.target.value)} />
-                                <div className="form-text">Nurodyk reikiamą biudžetą</div>
+                                <input
+                                    type="number"
+                                    min="10"
+                                    max="10000"
+                                    className="form-control"
+                                    value={budget}
+                                    onChange={e => setBudget(e.target.value)}
+                                />
+                                <div className="form-text fst-italic">Nurodyk biudžetą</div>
                             </div>
                             <div className="mb-3">
-                                <input type="text" className="form-control" value={yourName} onChange={e => setYourName(e.target.value)} />
-                                <div className="form-text">Įrašyk savo vardą</div>
+                                <input
+                                    type="text"
+                                    className="form-control fw-light fst-italic fs-6"
+                                    value={yourName}
+                                    onChange={e => setYourName(e.target.value)}
+                                    placeholder="įrašyk savo vardą..."
+                                />
                             </div>
                             <div className="mb-3">
-                                <input className="form-control form-control-sm" id="formFile" type="file" onChange={readFile} />
-                                <div className="form-text">Pridėk paveikslėlį</div>
+                                <input
+                                    className="form-control form-control-sm"
+                                    id="formFile"
+                                    type="file"
+                                    htmlFor="Pasirinkti failą"
+                                    onChange={readFile} />
+                                <div className="form-text fst-italic">Pridėk paveikslėlį</div>
                             </div>
                             <div>
                                 {
@@ -67,10 +94,11 @@ export default function Create() {
                                 }
 
                             </div>
+                            <div className="d-flex justify-content-center">
+                                <button className="m-1 btn btn-primary" onClick={remImage}>Pakeisk paveikslėlį</button>
+                                <button type="button" className="m-1 btn btn-success" onClick={create}>Pateik idėją</button>
+                            </div>
 
-                            <button className="m-1 btn btn-danger" onClick={remImage}>Pakeisk paveikslėlį</button>
-                            <button type="button" className="m-1 btn btn-primary" onClick={create}>Pateik</button>
-                            <button type="button" className="m-1 btn btn-primary"><Link to="home" className="nav-link active">Persigalvojai?</Link></button>
                         </div>
                     </div>
                 </div>

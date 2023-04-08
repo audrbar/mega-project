@@ -4,6 +4,7 @@ import Link from '../Components/Link';
 import ListFinished from './Districts/ListFinished';
 import { Store } from '../store';
 import { districtsList } from '../actions';
+import Footer from './Front/footer';
 
 export default function Home() {
 
@@ -41,7 +42,7 @@ export default function Home() {
                         <h2 className="step-number link-hover">2</h2>
                         <h5>Įkelk pasakojimą</h5>
                         <h6>
-                            Aprašyk savo sumanymą, papildyk jį vaizdo ir garso
+                            Aprašyk savo sumanymą ir papildyk jį vaizdo ir garso
                             medžiaga
                         </h6>
                     </div>
@@ -49,8 +50,7 @@ export default function Home() {
                         <h2 className="step-number link-hover">3</h2>
                         <h5>Nurodyk siekiamą biudžetą</h5>
                         <h6>
-                            Įrašyk veiklai užtikrinti reikiamą lėšų kiekį,
-                            nurodyk pagrindines išlaidų eilutes
+                            Įrašyk veiklai užtikrinti reikiamą biudžetą ir pagrįsk jį
                         </h6>
                     </div>
                 </div>
@@ -61,40 +61,13 @@ export default function Home() {
                     <h5>Finansuok bendruomenei svarbią veiklą!</h5>
                     <span className="pradek link-hover">
                         <Link action="districts-list" className="nav-link dabar">
-                            <i className="fa fa-magic"></i> Paremk dabar
+                            <i className="fa fa-magic"></i> Prisidėk dabar
                         </Link>
                     </span>
                 </div>
             </section>
             <ListFinished />
-            <section className="footer">
-                <div className="middle">
-                    <h2>Apie mus</h2>
-                    <h5 className="text-secondary">Sužinok daugiau apie projektą</h5>
-                </div>
-                <div className="steps">
-                    <div className="step">
-                        <h2 className="step-number link-hover">
-                            <i className="fa fa-map"></i>
-                        </h2>
-                        <h6 className='text-black'>Aplankyk</h6>
-                    </div>
-                    <div className="step">
-                        <h2 className="step-number link-hover">
-                            <i className="fa fa-phone"></i>
-                        </h2>
-                        <h6 className='text-black'>Skambink</h6>
-                    </div>
-                    <div className="step">
-                        <h2 className="step-number link-hover">
-                            <i className="fa fa-envelope"></i>
-                        </h2>
-                        <h6 className='text-black'>Rašyk</h6>
-                    </div>
-                </div>
-                <h5 className="copy-right text-secondary">2023 Bendruomenė-bendruomenei</h5>
-                <h5 className="copy-right text-secondary">&#169; Visos teisės saugomos</h5>
-            </section>
+            <Footer />
         </>
     );
 }

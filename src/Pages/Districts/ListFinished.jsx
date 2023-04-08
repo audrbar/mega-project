@@ -9,7 +9,7 @@ export default function ListFinished() {
         <div className="stories container-fluid position-relative">
             <div className="row justify-content-center">
                 <div className="card-group flex-nowrap align-content-stretch">
-                    {store?.data?.map((s) => (
+                    {store?.data?.map?.((s) => (
                         <div key={s.id} className="col-xl-3 col-md-4 col-sm-6 align-content-stretch">
                             <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-s p-3 w-100 stories">
                                 <div className="card-img-top">
@@ -36,9 +36,9 @@ export default function ListFinished() {
                     ))}
                 </div>
             </div>
-            <div className='position-absolute stories-title card-hover'>
+            <div className='position-absolute stories-title card-hover opacity-75'>
                 <h1>Peržiūrėk</h1>
-                <h5>Bendruomenės jau prafinansuotas idėjas</h5>
+                <h5>Biudžetą jau surinkusias idėjas</h5>
             </div>
         </div >
     );
