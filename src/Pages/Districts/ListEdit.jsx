@@ -1,9 +1,8 @@
 import { useContext } from 'react';
 import { Store, actionsList } from '../../store';
-import Link from '../../Components/Link';
 import '../../styles/home.scss';
 
-export default function List() {
+export function ListEdit() {
     const { store, dispach, imgUrl } = useContext(Store);
 
     return (
@@ -16,7 +15,7 @@ export default function List() {
                 <div className="card-group flex-nowrap align-content-stretch">
                     {store?.data?.map?.((s) => (
                         <div key={s.id} className="col-xl-3 col-md-4 col-sm-6 align-content-stretch">
-                            <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-100 stories">
+                            <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-150 stories">
                                 <div className="card-img-top">
                                     {s.photo ? (
                                         <img
@@ -43,14 +42,14 @@ export default function List() {
                                         onClick={(_) =>
                                             dispach(
                                                 actionsList[
-                                                    'districts-show-edit-donate'
+                                                    'districts-show-edit'
                                                 ](s.id)
                                             )
                                         }
                                     >
-                                        Prisidėsiu
+                                        Redaguoti
                                     </button>
-                                    {/* <button
+                                    <button
                                         type="button"
                                         className="btn btn-danger"
                                         onClick={(_) =>
@@ -62,7 +61,7 @@ export default function List() {
                                         }
                                     >
                                         Ištrinti
-                                    </button> */}
+                                    </button>
                                 </div>
                             </div>
                         </div>

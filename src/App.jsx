@@ -15,15 +15,16 @@ import SectionsList from './Pages/Sections/List';
 import SectionsCreate from './Pages/Sections/Create';
 import SectionsEdit from './Pages/Sections/Edit';
 
-import DistrictsList from './Pages/Districts/List';
 import DistrictsCreate from './Pages/Districts/Create';
-import DistrictsEdit from './Pages/Districts/Edit';
+import { EditDonate } from './Pages/Districts/EditDonate';
+import { EditDistrict } from './Pages/Districts/EditDistrict';
+import { ListEdit } from './Pages/Districts/ListEdit';
 
 import CommentsEdit from './Pages/Comments/List';
 
 import CommonList from './Pages/Front/List';
 import Comments from './Pages/Front/Comments';
-import { EditDonate } from './Pages/Districts/EditDonate';
+import { ListDonate } from './Pages/Districts/ListDonate';
 
 function App() {
     const { page, pageTop, messages, loader } = useContext(Store);
@@ -46,8 +47,9 @@ function App() {
             {page === 'sections-show-edit' ? <SectionsEdit /> : null}
 
             {page === 'districts-create' ? <DistrictsCreate /> : null}
-            {page === 'districts-list' ? <DistrictsList /> : null}
-            {page === 'districts-show-edit' ? <DistrictsEdit /> : null}
+            {page === 'districts-list' ? <ListEdit /> : null}
+            {page === 'districts-list-donate' ? <ListDonate /> : null}
+            {page === 'districts-show-edit' ? <EditDistrict /> : null}
             {page === 'districts-show-edit-donate' ? <EditDonate /> : null}
 
             {page === 'common-list' ? <CommonList /> : null}

@@ -5,7 +5,14 @@ export default function Nav() {
     return (
         <nav className="navbar navbar-light bg-light">
             <div className="container-fluid d-flex justify-content-between text-success">
-                <div className="nav-item"></div>
+                <div className="nav-item d-flex">
+                    <Link to="districts-list" className="nav-link">
+                        Redaguoti
+                    </Link>
+                    <Link to="districts-list-donate" className="nav-link mx-2">
+                        Prisidėti
+                    </Link>
+                </div>
                 <div className="nav-item  fs-4 text">
                     <Link to="home" className="nav-link active">
                         <span>Bendruomenė </span>

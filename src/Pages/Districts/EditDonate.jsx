@@ -15,7 +15,7 @@ export function EditDonate() {
     console.log('parduotuve', store);
     const edit = (_) => {
         dispach(
-            actionsList['districts-edit'](
+            actionsList['districts-edit-donate'](
                 {
                     ...store.data,
                     amount
@@ -29,8 +29,8 @@ export function EditDonate() {
         <div className="container-fluid back-ground-image2">
             <div className="d-flex justify-content-center">
                 <div className="col-md-6">
-                    <div className="card m-5">
-                        <div className="card-img-top m-1">
+                    <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-150 stories">
+                        <div className="card-img-top">
                             {store.data.photo ? (
                                 <img
                                     src={
@@ -44,17 +44,19 @@ export function EditDonate() {
                         <div className="card-body">
                             <div className="mb-3">
                                 <label className="form-label">
-                                    Remi idėją: {store.data.title}
+                                    <h5>
+                                        Remi idėją: {store.data.title}
+                                    </h5>
+                                    <h6 className='text-secondary'>
+                                        Idėjos biudžetas: {store.data.budget} $
+                                    </h6>
+                                    <h6 className='text-secondary'>
+                                        Iki šiol surinkta: {store.data.amount} $
+                                    </h6>
+                                    <h6 className='text-secondary'>
+                                        Liko surinkti: {store.data.budget - store.data.amount} $
+                                    </h6>
                                 </label>
-                                <h6>
-                                    Idėjos biudžetas: {store.data.budget} $
-                                </h6>
-                                <h6>
-                                    Iki šiol surinkta: {store.data.amount} $
-                                </h6>
-                                <h6>
-                                    Gali paremti: {store.data.budget - store.data.amount} $
-                                </h6>
                                 <input
                                     type="number"
                                     className="form-control"

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { actionsList, Store } from '../../store';
 import { useFile } from '../../Use/useFile';
 
-export default function Edit() {
+export function EditDistrict() {
     const { store, dispach, imgUrl } = useContext(Store);
     const [file, readFile, remImage] = useFile();
     const [delImg, setDelImg] = useState(false);
@@ -22,9 +22,10 @@ export default function Edit() {
         dispach(
             actionsList['districts-edit'](
                 {
+                    ...store.data,
                     title,
                     file,
-                    delImg,
+                    delImg
                 },
                 store.data.id
             )
@@ -41,15 +42,14 @@ export default function Edit() {
     };
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-6">
-                    <div className="card m-5">
-                        <div className="card-header">Rajonas</div>
+        <div className="stories container-fluid back-ground-image2">
+            <div className="d-flex justify-content-center">
+                <div className="col-md-6 mt-5">
+                    <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-2 w-150 stories">
                         <div className="card-body">
                             <div className="mb-3">
                                 <label className="form-label">
-                                    Redaguoti rajoną
+                                    <h5>Redaguok bendruomenės idėjas</h5>
                                 </label>
                                 <input
                                     type="text"
@@ -57,40 +57,37 @@ export default function Edit() {
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                 />
-                                <div className="form-text">
-                                    Pakeiskite rajono pavadinimą
+                                <div className="form-text fst-italic">
+                                    Tikslink idėjos pavadinimą
                                 </div>
                             </div>
                             <div className="mb-3">
-                                <label
-                                    htmlFor="formFileE"
-                                    className="form-label"
-                                >
-                                    Rajono herbas
-                                </label>
                                 <input
                                     className="form-control form-control-sm"
                                     id="formFileE"
                                     type="file"
                                     onChange={readFile}
                                 />
+                                <div className="form-text fst-italic">
+                                    Įkelk kitą paveikslą
+                                </div>
                             </div>
                             <div>
                                 {file ? (
                                     <img
-                                        className="upload-image mb-3"
+                                        className="upload-image object-fit-cover mb-3"
                                         src={file}
                                         alt="to upload"
                                     />
                                 ) : photo && !delImg ? (
                                     <img
-                                        className="upload-image"
+                                        className="upload-image object-fit-cover"
                                         src={imgUrl + photo}
                                         alt=""
                                     />
                                 ) : (
                                     <img
-                                        className="upload-image"
+                                        className="upload-image object-fit-cover "
                                         src={imgUrl + 'no_img.png'}
                                         alt=""
                                     />
