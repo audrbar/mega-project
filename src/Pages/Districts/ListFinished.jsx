@@ -8,7 +8,7 @@ export default function ListFinished() {
     return (
         <div className="stories container-fluid position-relative">
             <div className="row justify-content-center">
-                <div className="card-group flex-nowrap align-content-stretch py-3">
+                <div className="card-group card-group-finished flex-nowrap align-content-stretch py-3">
                     {store?.data?.map?.((s) => (
                         <div key={s.id} className="col-xl-3 col-md-4 col-sm-6 align-content-stretch">
                             <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-150 stories">

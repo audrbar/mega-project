@@ -127,14 +127,14 @@ section {
     background-color: #fdf4eb;
 }
 
-.card-group {
+.card-group-finished {
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
     column-gap: 10px;
 }
 
-.card-group::-webkit-scrollbar {
+.card-group-finished::-webkit-scrollbar {
     display: none;
 }
 

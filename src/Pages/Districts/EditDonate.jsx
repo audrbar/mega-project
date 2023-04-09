@@ -28,7 +28,7 @@ export function EditDonate() {
     return (
         <div className="container-fluid back-ground-image2">
             <div className="d-flex justify-content-center">
-                <div className="col-md-6">
+                <div className="mt-5 col-md-6">
                     <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-150 stories">
                         <div className="card-img-top">
                             {store.data.photo ? (
@@ -47,13 +47,13 @@ export function EditDonate() {
                                     <h5>
                                         Remi idėją: {store.data.title}
                                     </h5>
-                                    <h6 className='text-secondary'>
+                                    <h6 className='text-secondary fst-italic'>
                                         Idėjos biudžetas: {store.data.budget} $
                                     </h6>
-                                    <h6 className='text-secondary'>
+                                    <h6 className='text-secondary fst-italic'>
                                         Iki šiol surinkta: {store.data.amount} $
                                     </h6>
-                                    <h6 className='text-secondary'>
+                                    <h6 className='text-secondary text-danger'>
                                         Liko surinkti: {store.data.budget - store.data.amount} $
                                     </h6>
                                 </label>
@@ -70,7 +70,7 @@ export function EditDonate() {
                             </div>
                             <button
                                 type="button"
-                                className="btn btn-success"
+                                className="btn btn-outline-success"
                                 onClick={edit}
                             >
                                 Prisidedu

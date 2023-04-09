@@ -8,14 +8,14 @@ export function ListEdit() {
     return (
         <div className="stories container-fluid position-relative">
             <div className="row justify-content-center">
-                <div className='d-flex flex-column align-items-center justify-content-center my-4'>
+                <div className='d-flex flex-column align-items-center justify-content-center my-2'>
                     <h1>Peržiūrėk ir paremk</h1>
                     <h5>Bendruomenės finansuojamą idėją</h5>
                 </div>
-                <div className="card-group flex-nowrap align-content-stretch">
+                <div className="card-group mb-5">
                     {store?.data?.map?.((s) => (
-                        <div key={s.id} className="col-xl-3 col-md-4 col-sm-6 align-content-stretch">
-                            <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-3 w-150 stories">
+                        <div key={s.id} className="col-xl-3 col-md-4 col-sm-6">
+                            <div className="card card-hover shadow m-2 p-2">
                                 <div className="card-img-top">
                                     {s.photo ? (
                                         <img
@@ -31,14 +31,14 @@ export function ListEdit() {
                                     <div className="card-title">
                                         <h4>{s.title}</h4>
                                     </div>
-                                    <p className="card-text">{s.description}</p>
-                                    <p className="card-text">Autorius: {s.yourName}</p>
-                                    <h6 className="card-text">Biudžetas: {s.budget}</h6>
-                                    <h6 className="card-text">Surinkta: {s.amount}</h6>
-                                    <h6 className="card-text">Trūksta: {s.budget - s.amount}</h6>
+                                    <p className="card-text fst-italic">{s.description}</p>
+                                    <p className="card-text text-secondary fst-italic">Autorius: {s.yourName}</p>
+                                    <h6 className="card-text text-secondary fst-italic">Biudžetas: {s.budget} $</h6>
+                                    <h6 className="card-text text-secondary fst-italic">Surinkta: {s.amount} $</h6>
+                                    <h6 className="card-text text-danger">Liko surinkti: {s.budget - s.amount} $</h6>
                                     <button
                                         type="button"
-                                        className="btn btn-success"
+                                        className="btn btn-outline-secondary"
                                         onClick={(_) =>
                                             dispach(
                                                 actionsList[
@@ -51,7 +51,7 @@ export function ListEdit() {
                                     </button>
                                     <button
                                         type="button"
-                                        className="btn btn-danger"
+                                        className="btn btn-outline-danger mx-2"
                                         onClick={(_) =>
                                             dispach(
                                                 actionsList[
@@ -68,6 +68,7 @@ export function ListEdit() {
                     ))}
                 </div>
             </div>
+            <h5 className="copy-right text-secondary text-center">&#169; 2023 Bendruomenė-bendruomenei</h5>
         </div >
     );
 }

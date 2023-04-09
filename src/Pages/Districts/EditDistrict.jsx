@@ -94,20 +94,20 @@ export function EditDistrict() {
                                 )}
                             </div>
                             <button
-                                className="m-1 btn btn-danger"
+                                className="m-1 btn btn-outline-danger"
                                 onClick={delImage}
                             >
                                 Ištrinti
                             </button>
                             <button
-                                className="m-1 btn btn-warning"
+                                className="m-1 btn btn-outline-warning"
                                 onClick={cancelImage}
                             >
                                 Atšaukti
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-primary"
+                                className="btn btn-outline-secondary"
                                 onClick={edit}
                             >
                                 Keisti
