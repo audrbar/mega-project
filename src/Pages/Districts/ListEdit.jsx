@@ -68,7 +68,7 @@ export function ListEdit() {
                     ))}
                 </div>
             </div>
-            <h5 className="copy-right text-secondary text-center">&#169; 2023 Bendruomenė-bendruomenei</h5>
+            <h6 className="copy-right text-secondary text-center">&#169; 2023 Bendruomenė-bendruomenei</h6>
         </div >
     );
 }

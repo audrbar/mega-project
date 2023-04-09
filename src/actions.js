@@ -241,7 +241,7 @@ export const districtsEditDonate = (body, id) => {
             url: 'admin/districts/' + id,
             method: 'put',
             body,
-            show: 'districts-list',
+            show: 'districts-list-donate',
             pauseShow: 1000
         }
     }

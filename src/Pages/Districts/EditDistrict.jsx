@@ -42,10 +42,10 @@ export function EditDistrict() {
     };
 
     return (
-        <div className="stories container-fluid back-ground-image2">
+        <div className="container-fluid back-ground-image2">
             <div className="d-flex justify-content-center">
-                <div className="col-md-6 mt-5">
-                    <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-2 w-150 stories">
+                <div className="col-xxl-4 col-xl-5 col-lg-6 col-md-8 col-sm-10 mt-5">
+                    <div className="card card-hover shadow d-flex align-content-stretch justify-content-start m-2 p-2">
                         <div className="card-body">
                             <div className="mb-3">
                                 <label className="form-label">

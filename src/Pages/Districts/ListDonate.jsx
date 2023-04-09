@@ -14,7 +14,7 @@ export function ListDonate() {
                 </div>
                 <div className="card-group mb-5">
                     {store?.data?.map?.((s) => (
-                        <div key={s.id} className="col-xl-4 col-md-6 col-sm-6 align-content-stretch">
+                        <div key={s.id} className="col-xl-4 col-md-6 col-sm-6">
                             <div className="card card-hover shadow m-2 p-2">
                                 <div className="card-img-top">
                                     {s.photo ? (
@@ -55,7 +55,7 @@ export function ListDonate() {
                     ))}
                 </div>
             </div>
-            <h5 className="copy-right text-secondary text-center">&#169; 2023 Bendruomenė-bendruomenei</h5>
+            <h6 className="copy-right text-secondary text-center">&#169; 2023 Bendruomenė-bendruomenei</h6>
         </div >
     );
 }

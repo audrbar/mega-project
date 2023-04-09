@@ -37,7 +37,7 @@ export default function Nav() {
                         (
                             <div className='d-inline'>
                                 <span className="nav-item mx-2"><b>{authName}</b></span>
-                                <span className="nav-item cursor-pointer mx-2" onClick={logOut}>Atsijungti</span>
+                                <span className="nav-item mx-2 pointer link-hover" onClick={logOut}>Atsijungti</span>
                             </div>
                         ) :
                         (
