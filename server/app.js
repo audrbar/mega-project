@@ -150,7 +150,7 @@ app.post('/comments/:did/:sid', (req, res) => {
     con.query(sql, [req.body.text, req.params.did, req.params.sid], (err, result) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Jūsų pasiūlymas priimtas', type: 'info' }
+            msg: { text: 'Jūsų pasiūlymas priimtas', type: 'light' }
         });
     });
 });
@@ -185,7 +185,7 @@ app.put('/admin/comments-edit/:id', (req, res) => {
     con.query(sql, params, (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Pasiūlymo statusas pakeistas', type: 'info' }
+            msg: { text: 'Pasiūlymo statusas pakeistas', type: 'light' }
         });
     });
 });
@@ -199,7 +199,7 @@ app.delete('/admin/comments/o/:id', (req, res) => {
     con.query(sql, [req.params.id], (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Komentaras panaikintas. Nebėra.', type: 'info' }
+            msg: { text: 'Komentaras panaikintas. Nebėra.', type: 'light' }
         });
     });
 });
@@ -239,7 +239,7 @@ app.post('/admin/sections', (req, res) => {
     con.query(sql, [req.body.title], (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Nauja sritis pridėta', type: 'success' }
+            msg: { text: 'Nauja sritis pridėta', type: 'light' }
         });
     });
 });
@@ -253,7 +253,7 @@ app.delete('/admin/sections/:id', (req, res) => {
     con.query(sql, [req.params.id], (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Sritis ištrinta', type: 'info' }
+            msg: { text: 'Sritis ištrinta', type: 'light' }
         });
     });
 });
@@ -273,7 +273,7 @@ app.put('/admin/sections/:id', (req, res) => {
     con.query(sql, params, (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Sritis pakeista', type: 'info' }
+            msg: { text: 'Sritis pakeista', type: 'light' }
         });
     });
 });
@@ -313,7 +313,7 @@ app.post('/admin/districts', (req, res) => {
     con.query(sql, [req.body.title, req.body.description, req.body.budget, req.body.yourName, createPhoto(req.body.file)], (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Naujas pasiūlymas pridėtas', type: 'success' }
+            msg: { text: 'Naujas pasiūlymas pridėtas', type: 'light' }
         });
     });
 });
@@ -330,7 +330,7 @@ app.delete('/admin/districts/:id', (req, res) => {
     con.query(sql, [req.params.id], (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Pasiūlymas ištrintas', type: 'info' }
+            msg: { text: 'Pasiūlymas ištrintas', type: 'light' }
         });
     });
 });
@@ -364,7 +364,7 @@ app.put('/admin/districts/:id', (req, res) => {
     con.query(sql, params, (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'Pasiūlymas patikslintas', type: 'info' }
+            msg: { text: 'Pasiūlymas patikslintas', type: 'light' }
         });
     });
 });
@@ -398,7 +398,7 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-    res.clearCookie('megaSession');
+    res.clearCookie('megaSession', { domain: 'localhost', path: '/' })
     res.json({
         status: 'logout',
     });

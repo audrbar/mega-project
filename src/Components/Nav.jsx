@@ -21,56 +21,23 @@ export default function Nav() {
                             || null
                     }
                 </div>
-                <div className="nav-item  fs-4 text">
+                <div className="nav-item fs-4 text">
                     <Link to="home" className="nav-link active">
-                        <span>Bendruomenė </span>
-                        <i className="fa fa-sun-o fa-lg"></i>
-                        <span> Bendruomenei</span>
+                        <span>Bendruomenė <i className="fa fa-sun-o fa-lg"></i> bendruomenei</span>
                     </Link>
                 </div>
-                {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                        <Link to="home" className="nav-link active">
-                            Pradinis
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link action="districts-list" className="nav-link">
-                            Finansuojama
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="districts-create" className="nav-link">
-                            Pateik idėją
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link action="sections-list" className="nav-link">
-                            Sritys
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="sections-create" className="nav-link">
-                            Nauja Sritis
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link action="common-list" className="nav-link">
-                            Komentarai
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="comments-show-edit" className="nav-link">
-                            Komentarų peržiūra
-                        </Link>
-                    </li>
-                </ul> */}
+                {/* <div className="nav-item">
+                    <Link action="sections-list" className="nav-link">Sritys</Link>
+                    <Link to="sections-create" className="nav-link">Nauja Sritis</Link>
+                    <Link action="common-list" className="nav-link">Komentarai</Link>
+                    <Link to="comments-show-edit" className="nav-link">Komentarų peržiūra</Link>
+                </div> */}
                 {
                     authName ?
                         (
                             <div className='d-inline'>
                                 <span className="nav-item mx-2"><b>{authName}</b></span>
-                                <Link action="logout" className="nav-link">Atsijungti</Link>
+                                <span className="nav-item cursor-pointer mx-2" onClick={logOut}>Atsijungti</span>
                             </div>
                         ) :
                         (

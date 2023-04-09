@@ -6,13 +6,6 @@ export function EditDonate() {
     const { store, dispach, imgUrl } = useContext(Store);
     const [amount, setAmount] = useState(0);
 
-    useEffect(() => {
-        if (null === store) {
-            return;
-        }
-        setAmount(store.data.amount);
-    }, [store]);
-    console.log('parduotuve', store);
     const edit = (_) => {
         dispach(
             actionsList['districts-edit-donate'](

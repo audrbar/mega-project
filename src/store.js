@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState, useEffect } from 'react';
-import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsEditDonate, districtsList, districtsShowEdit, districtsShowEditDonate, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit, login, logout } from './actions';
+import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsEditDonate, districtsList, districtsShowEdit, districtsShowEditDonate, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit, login, logout, navigate } from './actions';
 import main from './Reducers/main';
 import axios from 'axios';
 import { SHOW_MESSAGE } from './types';
@@ -60,7 +60,7 @@ export const Provider = (props) => {
                 args.push(action.payload.body);
             }
             setLoader(true);
-            axios[action.payload.method](...args)
+            axios[action.payload.method](...args, { withCredentials: true })
                 .then(res => {
                     action = {
                         ...action, payload:
@@ -91,14 +91,15 @@ export const Provider = (props) => {
         dataDispach(action);
     }
 
-    const logout = (_) => {
-        dispach(actionsList['logout']({
-            authName,
-            logged
-        }));
-        setAuthName(false);
-        setLogged(null);
-    }
+    const logOut = (_) => {
+        axios
+            .post('http://localhost:3004/logout', {}, { withCredentials: true })
+            .then((_) => {
+                setAuthName(false);
+                setLogged(false);
+                dispach(navigate('home'));
+            });
+    };
 
     useEffect(() => {
         axios
@@ -125,7 +126,7 @@ export const Provider = (props) => {
 
             logged, setLogged,
             authName, setAuthName,
-            logout,
+            logOut,
 
             imgUrl
         }}>

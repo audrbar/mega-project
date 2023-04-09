@@ -7,9 +7,11 @@ body {
 
 .messages-bin {
     position: fixed;
-    bottom: 50px;
-    right: 50px;
-    max-width: 300px;
+    border: 1px solid #afb2b5;
+    border-radius: 5px;
+    top: 100px;
+    right: 45%;
+    max-width: 400px;
     z-index: 9999;
 }
 

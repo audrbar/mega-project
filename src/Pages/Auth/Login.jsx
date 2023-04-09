@@ -1,12 +1,14 @@
 import { useState, useContext } from 'react';
 import axios from 'axios';
-import { Store } from "../../store";
+import { Store, actionsList } from "../../store";
+import { navigate } from '../../actions';
 
 export default function Login() {
     const [userName, setUserName] = useState(null);
     const [error, setError] = useState(null);
     const [name, setName] = useState('');
     const [psw, setPsw] = useState('');
+    const { dispach } = useContext(Store);
 
     const { setLogged, setAuthName } = useContext(Store);
 
@@ -26,6 +28,7 @@ export default function Login() {
                     setError(null);
                     setLogged(true);
                     setAuthName(res.data.name);
+                    dispach(navigate('home'));
                 } else {
                     setError(true);
                     setUserName(null);
