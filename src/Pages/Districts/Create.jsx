@@ -40,10 +40,10 @@ export default function Create() {
                                 <label className="form-label">Pateik savo pasiūlymą</label>
                                 <input
                                     type="text"
-                                    className="form-control fw-light fst-italic fs-6"
+                                    className="form-control fw-light fs-6"
                                     value={title}
                                     onChange={e => setTitle(e.target.value)}
-                                    placeholder="nurodyk pasiūlymo pavadinimą..."
+                                    placeholder="Nurodyk pasiūlymo pavadinimą..."
                                 />
                             </div>
                             <div className="mb-3">
@@ -51,10 +51,10 @@ export default function Create() {
                                     maxlength='1000'
                                     minlength='20'
                                     type="text"
-                                    className="form-control fw-light fst-italic fs-6"
+                                    className="form-control fw-light fs-6"
                                     value={description}
                                     onChange={e => setDescription(e.target.value)}
-                                    placeholder="aprašyk savo idėją..."
+                                    placeholder="Aprašyk savo idėją..."
                                 />
                             </div>
                             <div className="mb-3">
@@ -71,10 +71,10 @@ export default function Create() {
                             <div className="mb-3">
                                 <input
                                     type="text"
-                                    className="form-control fw-light fst-italic fs-6"
+                                    className="form-control fw-light fs-6"
                                     value={yourName}
                                     onChange={e => setYourName(e.target.value)}
-                                    placeholder="įrašyk savo vardą..."
+                                    placeholder="Įrašyk savo vardą..."
                                 />
                             </div>
                             <div className="mb-3">
@@ -95,8 +95,8 @@ export default function Create() {
 
                             </div>
                             <div className="d-flex justify-content-center">
-                                <button className="m-1 btn btn-primary" onClick={remImage}>Pakeisk paveikslėlį</button>
-                                <button type="button" className="m-1 btn btn-success" onClick={create}>Pateik idėją</button>
+                                <button className="m-1 btn btn-outline-secondary" onClick={remImage}>Pakeisk paveikslėlį</button>
+                                <button type="button" className="m-1 btn btn-outline-success" onClick={create}>Pateik idėją</button>
                             </div>
 
                         </div>

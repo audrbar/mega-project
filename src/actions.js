@@ -1,4 +1,4 @@
-import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_EDIT_DONATE, DISTRICTS_SHOW_EDIT_DONATE, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICT_SECTION, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT } from './types';
+import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_EDIT_DONATE, DISTRICTS_SHOW_EDIT_DONATE, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICT_SECTION, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, LOGIN, LOGOUT } from './types';
 
 export const navigate = to => {
     return {
@@ -7,6 +7,27 @@ export const navigate = to => {
             to
         }
     };
+}
+
+export const login = _ => {
+    return {
+        type: LOGIN,
+        payload: {
+            url: 'login',
+            method: 'get',
+            page: 'home'
+        }
+    }
+}
+export const logout = _ => {
+    return {
+        type: LOGOUT,
+        payload: {
+            url: 'logout',
+            method: 'post',
+            page: 'home'
+        }
+    }
 }
 
 export const sectionsList = _ => {

@@ -26,3 +26,6 @@ export const COMMENT_DELETE = 4003 // delete comment
 export const COMMON_LIST = 3001 // get districts and sections list
 export const DISTRICT_SECTION = 3002 // get district and section comments
 export const ADD_COMMENT = 3003 // get district and section comments
+
+export const LOGIN = 5003 // get district and section comments
+export const LOGOUT = 5003 // get district and section comments

@@ -10,6 +10,7 @@ import Login from './Pages/Auth/Login';
 
 import Messages from './Components/Messages';
 import Loader from './Components/Loader';
+import Auth from './Components/Auth';
 
 import SectionsList from './Pages/Sections/List';
 import SectionsCreate from './Pages/Sections/Create';
@@ -49,7 +50,7 @@ function App() {
             {page === 'districts-create' ? <DistrictsCreate /> : null}
             {page === 'districts-list' ? <ListEdit /> : null}
             {page === 'districts-list-donate' ? <ListDonate /> : null}
-            {page === 'districts-show-edit' ? <EditDistrict /> : null}
+            {page === 'districts-show-edit' ? <Auth><EditDistrict /></Auth> : null}
             {page === 'districts-show-edit-donate' ? <EditDonate /> : null}
 
             {page === 'common-list' ? <CommonList /> : null}

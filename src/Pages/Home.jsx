@@ -60,7 +60,7 @@ export default function Home() {
                     <h1>Prisidėk</h1>
                     <h5>Finansuok bendruomenei svarbią veiklą!</h5>
                     <span className="pradek link-hover">
-                        <Link action="districts-list-donate" className="nav-link dabar">
+                        <Link to="districts-list-donate" className="nav-link dabar">
                             <i className="fa fa-magic"></i> Prisidėk dabar
                         </Link>
                     </span>

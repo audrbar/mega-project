@@ -1,17 +1,25 @@
 import Link from './Link';
-// import '../styles/nav.scss';
+import { useContext } from 'react';
+import { Store } from "../store";
 
 export default function Nav() {
+
+    const { authName, logOut } = useContext(Store);
+
     return (
         <nav className="navbar navbar-light bg-light">
             <div className="container-fluid d-flex justify-content-between text-success">
                 <div className="nav-item d-flex">
-                    <Link to="districts-list" className="nav-link">
-                        Redaguoti
-                    </Link>
-                    <Link to="districts-list-donate" className="nav-link mx-2">
-                        Prisidėti
-                    </Link>
+                    {
+                        authName ?
+                            (
+                                <Link to="districts-list" className="nav-link">Redaguoti</Link>
+                            ) :
+                            (
+                                <Link to="districts-list-donate" className="nav-link mx-2">Prisidėti</Link>
+                            )
+                            || null
+                    }
                 </div>
                 <div className="nav-item  fs-4 text">
                     <Link to="home" className="nav-link active">
@@ -57,11 +65,18 @@ export default function Nav() {
                         </Link>
                     </li>
                 </ul> */}
-                <span className="nav-item">
-                    <Link to="login" className="nav-link">
-                        Prisijungti
-                    </Link>
-                </span>
+                {
+                    authName ?
+                        (
+                            <div className='d-inline'>
+                                <span className="nav-item mx-2"><b>{authName}</b></span>
+                                <Link action="logout" className="nav-link">Atsijungti</Link>
+                            </div>
+                        ) :
+                        (
+                            <Link to="login" className="nav-link">Prisijungti</Link>
+                        )
+                }
             </div>
         </nav>
     );

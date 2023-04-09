@@ -1,5 +1,5 @@
-import { createContext, useReducer, useState } from 'react';
-import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsEditDonate, districtsList, districtsShowEdit, districtsShowEditDonate, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit } from './actions';
+import { createContext, useReducer, useState, useEffect } from 'react';
+import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsEditDonate, districtsList, districtsShowEdit, districtsShowEditDonate, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit, login, logout } from './actions';
 import main from './Reducers/main';
 import axios from 'axios';
 import { SHOW_MESSAGE } from './types';
@@ -26,6 +26,9 @@ export const actionsList = {
     'common-list': commonList,
     'district-section': districtSection,
     'add-comment': addComment,
+
+    'login': login,
+    'logout': logout
 }
 
 const url = 'http://localhost:3004/';
@@ -38,6 +41,8 @@ export const Provider = (props) => {
 
 
     const [loader, setLoader] = useState(false);
+    const [logged, setLogged] = useState(null);
+    const [authName, setAuthName] = useState(null);
 
     const [store, dispach] = useReducer(main, {
         page: 'home',
@@ -86,6 +91,26 @@ export const Provider = (props) => {
         dataDispach(action);
     }
 
+    const logout = (_) => {
+        dispach(actionsList['logout']({
+            authName,
+            logged
+        }));
+        setAuthName(false);
+        setLogged(null);
+    }
+
+    useEffect(() => {
+        axios
+            .get('http://localhost:3004/login', { withCredentials: true })
+            .then((res) => {
+                if (res.data.status === 'ok') {
+                    setLogged(true);
+                    setAuthName(res.data.name);
+                }
+            });
+    }, []);
+
     return (
         <Store.Provider value={{
             page: store.page,
@@ -97,6 +122,10 @@ export const Provider = (props) => {
             messages: store.messages,
             loader,
             start: () => setLoader(true),
+
+            logged, setLogged,
+            authName, setAuthName,
+            logout,
 
             imgUrl
         }}>

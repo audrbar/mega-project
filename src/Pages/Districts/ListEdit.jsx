@@ -9,8 +9,8 @@ export function ListEdit() {
         <div className="stories container-fluid position-relative">
             <div className="row justify-content-center">
                 <div className='d-flex flex-column align-items-center justify-content-center my-2'>
-                    <h1>Peržiūrėk ir paremk</h1>
-                    <h5>Bendruomenės finansuojamą idėją</h5>
+                    <h1>Patvirtink</h1>
+                    <h5>Įvertink ir redaguok pateiktą idėją</h5>
                 </div>
                 <div className="card-group mb-5">
                     {store?.data?.map?.((s) => (
