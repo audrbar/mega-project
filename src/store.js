@@ -14,10 +14,10 @@ export const actionsList = {
     'districts-create': districtsCreate,
     'districts-list': districtsList,
     'districts-delete': districtsDelete,
-    'districts-show-edit': districtsShowEdit,
-    'districts-show-edit-donate': districtsShowEditDonate,
     'districts-edit': districtsEdit,
+    'districts-show-edit': districtsShowEdit,
     'districts-edit-donate': districtsEditDonate,
+    'districts-show-edit-donate': districtsShowEditDonate,
 
     'comments-show-edit': commentsShowEdit,
     'comment-show-hide': commentShowHide,
@@ -39,7 +39,6 @@ export const Store = createContext();
 
 export const Provider = (props) => {
 
-
     const [loader, setLoader] = useState(false);
     const [logged, setLogged] = useState(null);
     const [authName, setAuthName] = useState(null);
@@ -48,7 +47,6 @@ export const Provider = (props) => {
         page: 'home',
         pageTop: 'nav'
     });
-
 
     const dataDispach = action => {
         if (!action.payload || !action.payload.url) {

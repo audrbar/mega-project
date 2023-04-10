@@ -4,24 +4,24 @@ import { actionsList } from '../store';
 
 export default function main(state, action) {
 
-    const c = structuredClone(state);
+    const stateClone = structuredClone(state);
 
     console.log('REDUCER: ', action);
 
     switch (action.type) {
         case NAVIGATE:
-            c.page = action.payload.to;
+            stateClone.page = action.payload.to;
             let defaultNav = 'nav';
 
             switch (action.payload.to) {
                 case 'login':
                 case 'register':
-                    c.pageTop = '';
+                    stateClone.pageTop = '';
                     break;
                 default:
-                    c.pageTop = defaultNav;
+                    stateClone.pageTop = defaultNav;
             }
-            return c;
+            return stateClone;
         case SECTIONS_LIST:
         case SECTIONS_SHOW_EDIT:
         case DISTRICTS_LIST:
@@ -31,11 +31,11 @@ export default function main(state, action) {
         case DISTRICT_SECTION:
         case COMMENTS_SHOW_EDIT:
             if (!action.payload.disableNavigate) {
-                c.pageTop = 'nav';
-                c.page = action.payload.page;
+                stateClone.pageTop = 'nav';
+                stateClone.page = action.payload.page;
             }
-            c.data = action.payload.data;
-            return c;
+            stateClone.data = action.payload.data;
+            return stateClone;
 
         case SECTIONS_CREATE:
         case SECTIONS_DELETE:
@@ -54,10 +54,10 @@ export default function main(state, action) {
             if (action.payload.msg) {
 
                 const uuid = uuidv4();
-                if (!c.messages) {
-                    c.messages = [];
+                if (!stateClone.messages) {
+                    stateClone.messages = [];
                 }
-                c.messages.push({ ...action.payload.msg, id: uuid })
+                stateClone.messages.push({ ...action.payload.msg, id: uuid })
                 setTimeout(() => {
                     action.doDispach({
                         type: REMOVE_MESSAGE,
@@ -74,11 +74,11 @@ export default function main(state, action) {
                 }, action.payload.hasOwnProperty('pauseShow') ? action.payload.pauseShow : 1000);
             }
 
-            return c;
+            return stateClone;
 
         case REMOVE_MESSAGE:
-            c.messages = c.messages.filter(m => m.id !== action.payload.uuid);
-            return c;
+            stateClone.messages = stateClone.messages.filter(m => m.id !== action.payload.uuid);
+            return stateClone;
         default:
     }
 
