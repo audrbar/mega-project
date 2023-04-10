@@ -341,6 +341,27 @@ app.put('/admin/districts/:id', (req, res) => {
     });
 });
 
+app.put('/admin/districts/a/:id', (req, res) => {
+
+    let params = [req.body.amount, req.params.id];
+    const sql = `
+            UPDATE districts
+            SET amount = ?
+            WHERE id = ?
+        `;
+
+    con.query('SELECT id, amount FROM districts WHERE id = ?', [req.params.id], (err, result) => {
+        if (err) throw err;
+        params = [result[0].amount + req.body.amount, req.params.id];
+        con.query(sql, params, (err) => {
+            if (err) throw err;
+            res.json({
+                msg: { text: 'Ačiū, pinigai įskaičiuoti', type: 'light' }
+            });
+        });
+    });
+});
+
 //*************** LOGIN ********************/
 
 app.post('/login', (req, res) => {

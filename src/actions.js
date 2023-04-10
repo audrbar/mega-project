@@ -1,4 +1,4 @@
-import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_EDIT_DONATE, DISTRICTS_SHOW_EDIT_DONATE, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICT_SECTION, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, LOGIN, LOGOUT } from './types';
+import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_EDIT_DONATE, DISTRICTS_SHOW_EDIT_DONATE, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICT_SECTION, NAVIGATE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, LOGIN, LOGOUT, DISTRICTS_LIST_DONATE } from './types';
 
 export const navigate = to => {
     return {
@@ -48,6 +48,18 @@ export const districtsList = (disableNavigate = false) => {
             url: 'admin/districts',
             method: 'get',
             page: 'districts-list',
+            disableNavigate
+        }
+    }
+}
+
+export const districtsListDonate = (disableNavigate = false) => {
+    return {
+        type: DISTRICTS_LIST_DONATE,
+        payload: {
+            url: 'admin/districts',
+            method: 'get',
+            page: 'districts-list-donate',
             disableNavigate
         }
     }
@@ -238,7 +250,7 @@ export const districtsEditDonate = (body, id) => {
     return {
         type: DISTRICTS_EDIT_DONATE,
         payload: {
-            url: 'admin/districts/' + id,
+            url: 'admin/districts/a/' + id,
             method: 'put',
             body,
             show: 'districts-list-donate',

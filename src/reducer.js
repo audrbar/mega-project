@@ -1,11 +1,9 @@
-import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_EDIT_DONATE, DISTRICTS_LIST, DISTRICTS_SHOW_EDIT, DISTRICTS_SHOW_EDIT_DONATE, DISTRICT_SECTION, NAVIGATE, REMOVE_MESSAGE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, SHOW_MESSAGE } from "../types";
+import { ADD_COMMENT, COMMENTS_SHOW_EDIT, COMMENT_DELETE, COMMENT_SHOW_HIDE, COMMON_LIST, DISTRICTS_CREATE, DISTRICTS_DELETE, DISTRICTS_EDIT, DISTRICTS_EDIT_DONATE, DISTRICTS_LIST, DISTRICTS_LIST_DONATE, DISTRICTS_SHOW_EDIT, DISTRICTS_SHOW_EDIT_DONATE, DISTRICT_SECTION, NAVIGATE, REMOVE_MESSAGE, SECTIONS_CREATE, SECTIONS_DELETE, SECTIONS_EDIT, SECTIONS_LIST, SECTIONS_SHOW_EDIT, SHOW_MESSAGE } from "./types";
 import { v4 as uuidv4 } from 'uuid';
-import { actionsList } from '../store';
+import { actionsList } from './store';
 
-export default function main(state, action) {
-
+export default function reducer(state, action) {
     const stateClone = structuredClone(state);
-
     console.log('REDUCER: ', action);
 
     switch (action.type) {
@@ -25,6 +23,7 @@ export default function main(state, action) {
         case SECTIONS_LIST:
         case SECTIONS_SHOW_EDIT:
         case DISTRICTS_LIST:
+        case DISTRICTS_LIST_DONATE:
         case DISTRICTS_SHOW_EDIT:
         case DISTRICTS_SHOW_EDIT_DONATE:
         case COMMON_LIST:
@@ -70,6 +69,7 @@ export default function main(state, action) {
 
             if (action.payload.show) {
                 setTimeout(() => {
+                    console.log(action.payload.show);
                     action.doDispach(actionsList[action.payload.show]());
                 }, action.payload.hasOwnProperty('pauseShow') ? action.payload.pauseShow : 1000);
             }

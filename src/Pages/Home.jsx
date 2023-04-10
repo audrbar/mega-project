@@ -19,7 +19,7 @@ export default function Home() {
             <section id="hero">
                 <div className="home back-ground-image">
                     <h1>Pateik savo idėją!</h1>
-                    <h5>Ir gauk sutelktąjį bendruomenės finasavimą</h5>
+                    <h5>Ir gauk sutelktąjį bendruomenės finansavimą</h5>
                     <span className="pradek link-hover">
                         <Link to="districts-create" className="nav-link dabar">
                             <i className="fa fa-magic"></i> Pradėk dabar

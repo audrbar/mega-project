@@ -1,6 +1,6 @@
 import { createContext, useReducer, useState, useEffect } from 'react';
-import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsEditDonate, districtsList, districtsShowEdit, districtsShowEditDonate, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit, login, logout, navigate } from './actions';
-import main from './Reducers/main';
+import { addComment, commentDelete, commentShowHide, commentsShowEdit, commonList, districtsCreate, districtsDelete, districtSection, districtsEdit, districtsEditDonate, districtsList, districtsListDonate, districtsShowEdit, districtsShowEditDonate, sectionsCreate, sectionsDelete, sectionsEdit, sectionsList, sectionsShowEdit, login, logout, navigate } from './actions';
+import reducer from './reducer';
 import axios from 'axios';
 import { SHOW_MESSAGE } from './types';
 
@@ -13,6 +13,8 @@ export const actionsList = {
 
     'districts-create': districtsCreate,
     'districts-list': districtsList,
+
+    'districts-list-donate': districtsListDonate,
     'districts-delete': districtsDelete,
     'districts-edit': districtsEdit,
     'districts-show-edit': districtsShowEdit,
@@ -43,7 +45,7 @@ export const Provider = (props) => {
     const [logged, setLogged] = useState(null);
     const [authName, setAuthName] = useState(null);
 
-    const [store, dispach] = useReducer(main, {
+    const [store, dispach] = useReducer(reducer, {
         page: 'home',
         pageTop: 'nav'
     });

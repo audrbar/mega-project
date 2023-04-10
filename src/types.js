@@ -11,6 +11,7 @@ export const SECTIONS_SHOW_EDIT = 1004 // show sections item edit
 export const SECTIONS_EDIT = 1005 // edit sections item
 
 export const DISTRICTS_LIST = 2001 // get districts list
+export const DISTRICTS_LIST_DONATE = 2008 // get districts list
 export const DISTRICTS_SHOW_CREATE = 501 // show create new item in districts
 export const DISTRICTS_CREATE = 2002 // create new item in districts
 export const DISTRICTS_DELETE = 2003 // delete item in districts

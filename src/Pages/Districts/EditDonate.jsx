@@ -11,7 +11,7 @@ export function EditDonate() {
             actionsList['districts-edit-donate'](
                 {
                     ...store.data,
-                    amount
+                    amount: parseInt(amount)
                 },
                 store.data.id
             )
