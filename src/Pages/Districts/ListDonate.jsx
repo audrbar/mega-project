@@ -5,6 +5,8 @@ import '../../styles/home.scss';
 export function ListDonate() {
     const { store, dispach, imgUrl } = useContext(Store);
 
+    const active = store?.data?.filter(item => { return item.amount < item.budget });
+
     return (
         <div className="stories container-fluid position-relative">
             <div className="row justify-content-center">
@@ -13,7 +15,7 @@ export function ListDonate() {
                     <h5>Paremk bendruomenės finansuojamą idėją</h5>
                 </div>
                 <div className="card-group mb-5">
-                    {store?.data?.map?.((s) => (
+                    {active?.map?.((s) => (
                         <div key={s.id} className="col-xl-4 col-md-6 col-sm-6">
                             <div className="card card-hover shadow m-2 p-2">
                                 <div className="card-img-top">
