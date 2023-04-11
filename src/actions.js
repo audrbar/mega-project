@@ -166,7 +166,7 @@ export const districtsCreate = body => {
             url: 'admin/districts',
             method: 'post',
             body,
-            show: 'districts-list',
+            show: 'districts-list-donate',
             pauseShow: 1000
         }
     }
